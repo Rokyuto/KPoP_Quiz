@@ -36,20 +36,38 @@ public class S_CategoryBtn : MonoBehaviour
             //Load Guess the Group Quiz
             case 0:
                 Debug.Log("Loaded Quiz: Guess the Group"); //DEBUG :: Print Clicked Button Index
-                _CategoriesMenu.Func_HideCanvas(); //Hide Category Canvas
-                _QuizCanvas.Func_ShowQuizPanel(); //Show Quiz Canvas
+                break;
+
+            case 1:
+                Debug.Log("Loaded Quiz: Guess the Idol"); //DEBUG :: Print Clicked Button Index
+                LoadQuizCanvas();
                 break;
 
             case 7:
                 Debug.Log("Loaded Startup"); //DEBUG :: Print Clicked Button Index
-                Func_Back();
                 break;
         }
+
+        //Load Next Canvas on Button Clicked
+        if (ClickedButtonIndex < _CategoriesMenu._CategoriesButtons.Length - 1) //If Clicked Button is EVERYONE EXCEPT BACK BUTTON
+        {
+            LoadQuizCanvas(); //Load Quiz Canvas
+        }
+        else //If Clicked Button is BACK BUTTON
+        {
+            Func_Back(); //Go one step back - to Startup Canvas
+        }
+    }
+
+    void LoadQuizCanvas()
+    {
+        _CategoriesMenu.Func_VisualizeCategoriesPanel(false); //Hide Category Canvas
+        _QuizCanvas.Func_VisualizeQuizPanel(true); //Show Quiz Canvas
     }
 
     void Func_Back()
     {
-        _CategoriesMenu.Func_HideCanvas(); //Hide Category Canvas
+        _CategoriesMenu.Func_VisualizeCategoriesPanel(false); //Hide Category Canvas
         _StartupCanvas.Func_ShowStartupCanvas(); //Show Startup Canvas
     }
 }

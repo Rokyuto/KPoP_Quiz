@@ -11,18 +11,19 @@ public class S_CtryCanvas : MonoBehaviour
     // On App Start
     void Start()
     {
-        Func_HideCanvas();
+        Func_VisualizeCategoriesPanel(false);
     }
 
-    //Hide CategoriesCanvas
-    public void Func_HideCanvas()
+    //Update Category Panel Visibility
+    public void Func_VisualizeCategoriesPanel(bool isActive)
     {
-        _CategoriesCanvas.gameObject.SetActive(false);
-    }
-
-    //Show CategoriesCanvas
-    public void Func_ShowCanvas()
-    {
-        _CategoriesCanvas.gameObject.SetActive(true);
+        if (isActive == true)
+        {
+            _CategoriesCanvas.gameObject.SetActive(true); //Show Category Panel
+        }
+        else
+        {
+            _CategoriesCanvas.gameObject.SetActive(false); //Hide Category Panel
+        }
     }
 }
