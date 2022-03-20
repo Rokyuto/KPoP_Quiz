@@ -7,8 +7,8 @@ public class S_CategoryBtn : MonoBehaviour
 {
     public Button _CurrentButton; //Initialize Category Buttons from Game Scene
     public S_CtryCanvas _CategoriesMenu; //Initialize Category Canvas from Game Scene and S_CtryCanvas
-    public S_Quiz _QuizCanvas; // Initialize Quiz Canvas from Game Scene and S_Quiz Script
     public S_StartupCanvas _StartupCanvas; // Initialize Startup Canvas from Game Scene and S_Startup Script 
+    public S_Quiz _QuizCanvas; // Initialize Quiz Canvas from Game Scene and S_Quiz Script
 
     // Start is called before the first frame update
     void Start()
@@ -25,31 +25,16 @@ public class S_CategoryBtn : MonoBehaviour
     //Load Quiz || Back to Startup
     void Func_SetupQuiz()
     {
-        Debug.Log("Clicked Button: " + _CurrentButton); //DEBUG :: Print Clicked Button
+        int _ClickedButtonIndex = System.Array.IndexOf(_CategoriesMenu._CategoriesButtons, _CurrentButton);
 
-        int ClickedButtonIndex = System.Array.IndexOf(_CategoriesMenu._CategoriesButtons, _CurrentButton);
-
-        Debug.Log("Clicked Button Index: " + ClickedButtonIndex); //DEBUG :: Print Clicked Button Index
-
-        switch (ClickedButtonIndex)
+        switch( _ClickedButtonIndex )
         {
-            //Load Guess the Group Quiz
             case 0:
-                Debug.Log("Loaded Quiz: Guess the Group"); //DEBUG :: Print Clicked Button Index
-                break;
-
-            case 1:
-                Debug.Log("Loaded Quiz: Guess the Idol"); //DEBUG :: Print Clicked Button Index
-                LoadQuizCanvas();
-                break;
-
-            case 7:
-                Debug.Log("Loaded Startup"); //DEBUG :: Print Clicked Button Index
                 break;
         }
 
         //Load Next Canvas on Button Clicked
-        if (ClickedButtonIndex < _CategoriesMenu._CategoriesButtons.Length - 1) //If Clicked Button is EVERYONE EXCEPT BACK BUTTON
+        if (_ClickedButtonIndex < _CategoriesMenu._CategoriesButtons.Length - 1) //If Clicked Button is EVERYONE EXCEPT BACK BUTTON
         {
             LoadQuizCanvas(); //Load Quiz Canvas
         }
@@ -71,3 +56,5 @@ public class S_CategoryBtn : MonoBehaviour
         _StartupCanvas.Func_ShowStartupCanvas(); //Show Startup Canvas
     }
 }
+
+//Debug.Log(); //DEBUG :: Print
