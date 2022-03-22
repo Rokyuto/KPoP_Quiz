@@ -14,15 +14,17 @@ public class S_Quiz : MonoBehaviour
     public TextMeshProUGUI _QuestionTextMesh; // Initialize Question Text Mesh
     public TextMeshProUGUI _QuestionNumberTextMesh; // Initialize Question Number Text Mesh
 
-    public Image _QuestionPicture; //Initialize Question Picture Image
-    public VideoPlayer _QuestionVideoPlayer; //Initialize Question Video Player
-    public AudioSource _QuestionAudioSource; //Initialize Question Audio Source
-
     public Button QuitButton; // Initialize QuitButton
     public Button NextButton; // Initialize NextButton
 
     public Button[] AnsButtons; // Initialize array with AnsButtons
     public GameObject[] ClickMarks; // Initialize array with ClickMarks
+
+    public Image _QuestionPicture; //Initialize Question Picture Image
+    public VideoPlayer _QuestionVideoPlayer; //Initialize Question Video Player
+    public AudioSource _QuestionAudioSource; //Initialize Question Audio Source
+
+    public Sprite[] _Arr_GuessGroupsImgs; // Initialize & Create Array with Groups Images for "Guess the Group" Quiz
 
     //Other Game Objects
     public S_CtryCanvas _CtryCanvas; // Initialize Category Canvas
@@ -37,7 +39,7 @@ public class S_Quiz : MonoBehaviour
     void Start()
     {
         Func_VisualizeQuizPanel(false); //Visualize Quiz Panel
-        Func_UpdateQuestionNumber();
+        Func_UpdateQuestionNumber(); //Update Question Number
         Func_HideClickMark(); //Hide Click Marks
 
     }
@@ -48,6 +50,7 @@ public class S_Quiz : MonoBehaviour
         if(isActive == true)
         {
             _QuizCanvas.gameObject.SetActive(true); //Show Quiz Canvas and Objects
+            Func_GenQuestionImage(); //Generate Random Question Image 
         }
         else
         {
@@ -90,6 +93,14 @@ public class S_Quiz : MonoBehaviour
         _QuestionPicture.gameObject.SetActive(isPictureVisible);
         _QuestionVideoPlayer.gameObject.SetActive(isVideoVisible);
         _QuestionAudioSource.gameObject.SetActive(isAudioVisible);
+
+    }
+
+    //Generate Random Question Image from _Arr_GuessGroupsImgs array
+    public void Func_GenQuestionImage()
+    {
+        var v_Index_QuestionPicture = Random.Range(0, _Arr_GuessGroupsImgs.Length );
+        _QuestionPicture.sprite = _Arr_GuessGroupsImgs[v_Index_QuestionPicture];
     }
 
     //On Answer Button Click
@@ -110,7 +121,7 @@ public class S_Quiz : MonoBehaviour
         }
 
         v_Last_ClickedButtonIndex = Index_ClickedButton; //Update the Index of Last Clicked Button
-    
+
     }
 
     //Quit Quiz Function
