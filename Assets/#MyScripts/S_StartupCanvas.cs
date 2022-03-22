@@ -9,13 +9,8 @@ public class S_StartupCanvas : MonoBehaviour
     public Canvas StartupCanvas; //Create Canvas Object to Initialize StartupCanvas from the Scene
     public Canvas CategoriesCanvas; //Create Canvas Object to Initialize CategoriesCanvas from the Scene
 
-    void Start()
-    {
-        PlayButton.onClick.AddListener(Func_OnClick); // On PlayButton Clicked
-    }
-
     //PlayButton Clicked
-    void Func_OnClick()
+    public void Func_OnClick()
     {
         StartupCanvas.gameObject.SetActive(false); //Hide StartupCanvas
         CategoriesCanvas.gameObject.SetActive(true); //Hide CategoriesCanvas

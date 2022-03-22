@@ -25,13 +25,44 @@ public class S_CategoryBtn : MonoBehaviour
     //Load Quiz || Back to Startup
     void Func_SetupQuiz()
     {
-        int _ClickedButtonIndex = System.Array.IndexOf(_CategoriesMenu._CategoriesButtons, _CurrentButton);
+        int _ClickedButtonIndex = System.Array.IndexOf(_CategoriesMenu._CategoriesButtons, _CurrentButton); //Get Clicked Button Index from the CategoriesButtons Array
+        string QuizQuestion = ""; //The Name of the Quiz
 
-        switch( _ClickedButtonIndex )
+        //Track which button is Clicked || Set Question Text
+        switch ( _ClickedButtonIndex )
         {
             case 0:
+                QuizQuestion = "Guess the Group";
+                _QuizCanvas.Func_VisualizeQuestionElements(true,false,false);
                 break;
+            case 1:
+                QuizQuestion = "Guess the Song";
+                _QuizCanvas.Func_VisualizeQuestionElements(false, false, true);
+                break;
+            case 2:
+                QuizQuestion = "Guess the Idol";
+                _QuizCanvas.Func_VisualizeQuestionElements(true, false, false);
+                break;
+            case 3:
+                QuizQuestion = "Guess the Idol who Sing";
+                _QuizCanvas.Func_VisualizeQuestionElements(false, false, true);
+                break;
+            case 4:
+                QuizQuestion = "Guess song part performer";
+                _QuizCanvas.Func_VisualizeQuestionElements(false, false, true);
+                break;
+            case 5:
+                QuizQuestion = "Guess which song the dance is from";
+                _QuizCanvas.Func_VisualizeQuestionElements(false, true, false);
+                break;
+            case 6:
+                QuizQuestion = "Guess Idol Nationality";
+                _QuizCanvas.Func_VisualizeQuestionElements(true, false, false);
+                break;
+
         }
+
+        _QuizCanvas.Func_UpdateQuestionText(QuizQuestion); //Update Question Text Content
 
         //Load Next Canvas on Button Clicked
         if (_ClickedButtonIndex < _CategoriesMenu._CategoriesButtons.Length - 1) //If Clicked Button is EVERYONE EXCEPT BACK BUTTON
@@ -44,12 +75,14 @@ public class S_CategoryBtn : MonoBehaviour
         }
     }
 
+    //Load Quiz Canvas
     void LoadQuizCanvas()
     {
         _CategoriesMenu.Func_VisualizeCategoriesPanel(false); //Hide Category Canvas
         _QuizCanvas.Func_VisualizeQuizPanel(true); //Show Quiz Canvas
     }
 
+    //Go Back to Category Canvas
     void Func_Back()
     {
         _CategoriesMenu.Func_VisualizeCategoriesPanel(false); //Hide Category Canvas
