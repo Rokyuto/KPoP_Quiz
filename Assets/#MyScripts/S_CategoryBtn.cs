@@ -10,6 +10,8 @@ public class S_CategoryBtn : MonoBehaviour
     public S_StartupCanvas _StartupCanvas; // Initialize Startup Canvas from Game Scene and S_Startup Script 
     public S_Quiz _QuizCanvas; // Initialize Quiz Canvas from Game Scene and S_Quiz Script
 
+    public string QuizQuestion = ""; //The Name of the Quiz
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +28,14 @@ public class S_CategoryBtn : MonoBehaviour
     void Func_SetupQuiz()
     {
         int _ClickedButtonIndex = System.Array.IndexOf(_CategoriesMenu._CategoriesButtons, _CurrentButton); //Get Clicked Button Index from the CategoriesButtons Array
-        string QuizQuestion = ""; //The Name of the Quiz
 
         //Track which button is Clicked || Set Question Text
         switch ( _ClickedButtonIndex )
         {
             case 0:
-                QuizQuestion = "Guess the Group";
-                _QuizCanvas.Func_VisualizeQuestionElements(true,false,false);
+                // If QuizQuestion is "Guess the Group" :
+                _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_Groups); // Insert in the List Answers Guess Group Array
+                _QuizCanvas.Func_VisualizeQuestionElements(true,false,false); // Visualize Question Element (Picture, Video, Audio)
                 break;
             case 1:
                 QuizQuestion = "Guess the Song";

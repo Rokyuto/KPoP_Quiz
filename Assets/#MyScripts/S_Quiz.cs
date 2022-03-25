@@ -11,29 +11,43 @@ public class S_Quiz : MonoBehaviour
     //Quiz Canvas Objects
     public Canvas _QuizCanvas; // Create Canvas Object to Initialize Quiz Canvas from the Scene
 
-    public TextMeshProUGUI _QuestionTextMesh; // Initialize Question Text Mesh
-    public TextMeshProUGUI _QuestionNumberTextMesh; // Initialize Question Number Text Mesh
+    public TextMeshProUGUI _QuestionTextMesh; // Question Text Mesh
+    public TextMeshProUGUI _QuestionNumberTextMesh; // Question Number Text Mesh
 
-    public Button QuitButton; // Initialize QuitButton
-    public Button NextButton; // Initialize NextButton
+    public TextMeshProUGUI[] _Arr_AnsButtonsText; // Array with Answer Buttons Texts
+    public List<TextMeshProUGUI> _List_AnsButtonsText; // List with Answer Buttons Texts
 
-    public Button[] AnsButtons; // Initialize array with AnsButtons
-    public GameObject[] ClickMarks; // Initialize array with ClickMarks
+    public Button QuitButton; // QuitButton
+    public Button NextButton; // NextButton
 
-    public Image _QuestionPicture; //Initialize Question Picture Image
-    public VideoPlayer _QuestionVideoPlayer; //Initialize Question Video Player
-    public AudioSource _QuestionAudioSource; //Initialize Question Audio Source
+    public Button[] AnsButtons; // Array with AnsButtons
+    public GameObject[] ClickMarks; // Array with ClickMarks
 
-    public Sprite[] _Arr_GuessGroupsImgs; // Initialize & Create Array with Groups Images for "Guess the Group" Quiz
+    public Image _QuestionPicture; // Question Picture Image
+    public VideoPlayer _QuestionVideoPlayer; // Question Video Player
+    public AudioSource _QuestionAudioSource; // Question Audio Source
+
+    public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
+    //public List<Text> _Arr_AnsGuessGroup;
 
     //Other Game Objects
-    public S_CtryCanvas _CtryCanvas; // Initialize Category Canvas
+    public S_CtryCanvas _CtryCanvas; // Category Canvas
 
     //Variables
-    int v_Last_ClickedButtonIndex = -1; //Initialize Last Clicked Answer Button Index
+    int v_Last_ClickedButtonIndex = -1; // Last Clicked Answer Button Index
     int v_ClickedButtons_Quantity; // Check Quantity of Clicked Answer Buttons 
-    int v_QuestionNumber = 0; // Track Question Number
-    int v_QuestionsQuantity = 20; // Initialize Questions Quantity in the Quiz
+    int v_QuestionNumber = 0; // Tracker Question Number
+    int v_QuestionsQuantity = 20; // Questions Quantity in the Quiz
+
+    Button LastClickedButton = null; // Tracker Last Clicked Button
+
+    string v_QuestionImageName; // Question Image Name (Correct Question Answer)
+
+    //Answers objects
+    public List<string> List_Answers = new List<string>(); //List Quiz Answers
+
+    //Quiz Answers Arrays
+    public string[] Arr_Groups = { "BLACKPINK", "TWICE", "ITZY" , "DREAMCATCHER"}; //Array Guess Group
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +55,6 @@ public class S_Quiz : MonoBehaviour
         Func_VisualizeQuizPanel(false); //Visualize Quiz Panel
         Func_UpdateQuestionNumber(); //Update Question Number
         Func_HideClickMark(); //Hide Click Marks
-
     }
 
     //Update Quiz Canvas Visibility
@@ -49,8 +62,9 @@ public class S_Quiz : MonoBehaviour
     {
         if(isActive == true)
         {
-            _QuizCanvas.gameObject.SetActive(true); //Show Quiz Canvas and Objects
-            Func_GenQuestionImage(); //Generate Random Question Image 
+            _QuizCanvas.gameObject.SetActive(true); //Show Quiz Canvas and Objects     
+            Func_GenQuestionImage(); //Generate Random Question Image
+            Func_GenButtonsAnswers(); //Generate Buttons Answers Texts
         }
         else
         {
@@ -99,29 +113,87 @@ public class S_Quiz : MonoBehaviour
     //Generate Random Question Image from _Arr_GuessGroupsImgs array
     public void Func_GenQuestionImage()
     {
-        var v_Index_QuestionPicture = Random.Range(0, _Arr_GuessGroupsImgs.Length );
-        _QuestionPicture.sprite = _Arr_GuessGroupsImgs[v_Index_QuestionPicture];
+        var v_Index_QuestionPicture = Random.Range( 0, _Arr_GuessGroupsImgs.Length ); // Generate Random INDEX for Question Picture
+        _QuestionPicture.sprite = _Arr_GuessGroupsImgs[v_Index_QuestionPicture]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
+        v_QuestionImageName = _QuestionPicture.sprite.name; //GET the NAME of the IMAGE
+    }
+
+    //Generate Question Answers and CHANGE the Buttons Text to them 
+    public void Func_GenButtonsAnswers()
+    {
+        var v_CorrectButtonTextIndex = Random.Range(0, _List_AnsButtonsText.Count); // Generate Random Index of the Correct Buttons Text List which will contains the Correct Answer
+        _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+
+        _List_AnsButtonsText.RemoveAt(v_CorrectButtonTextIndex); // REMOVE the INDEX of the CORRECT BUTTON TEXT
+        List_Answers.Remove(v_QuestionImageName); // REMOVE the CORRECT ANSWER (STRING) from Answers List
+
+        foreach(var ButtonText in _List_AnsButtonsText)
+        { 
+            var v_WrongButtonsTextIndex = Random.Range(0, _List_AnsButtonsText.Count);
+            ButtonText.text = List_Answers[v_WrongButtonsTextIndex];
+
+            List_Answers.Remove(List_Answers[v_WrongButtonsTextIndex]); // REMOVE the CORRECT ANSWER (STRING) from Answers List
+        }
+
     }
 
     //On Answer Button Click
     public void Func_AnsButonClicked(Button clickedButton)
     {
-        int Index_ClickedButton = System.Array.IndexOf(AnsButtons, clickedButton); // Get Clicked Anser Button Index from AnsButton array
+        int Index_ClickedButton = System.Array.IndexOf(AnsButtons, clickedButton); // Get Clicked Answer Button Index from AnsButton array
 
-        GameObject Mark_ClickedButton = ClickMarks[Index_ClickedButton]; // Get the parallel Click Mark (on the SAME INDEX)
-        Mark_ClickedButton.SetActive(true); //Visualize the Click Mark
-
-        v_ClickedButtons_Quantity++; //Increment Quantity of Clicked Answer Buttons
-
-        if (v_ClickedButtons_Quantity >= 2) // If Clicked Answer Buttons is 2 at the same time
+        if (LastClickedButton != clickedButton) //Check if the NEW Clicked Button is the SAME -> if NOT -> CONTINUE
         {
-            GameObject PreviousButtonMark = ClickMarks[v_Last_ClickedButtonIndex]; //Get Prevous Click Mark (on the Previous Clicked Answer Button)
-            PreviousButtonMark.SetActive(false); //Hide the Previous Click Mark
-            v_ClickedButtons_Quantity = 1; // Return the Quality of Clicked Buttons to 1
+            ClickMarks[Index_ClickedButton].SetActive(true); //Visualize the parallel Click Mark (on the SAME INDEX of the Buttons Array)
+
+            v_ClickedButtons_Quantity++; //Increment Quantity of Clicked Answer Buttons
+
+            if (v_ClickedButtons_Quantity >= 2) // If Clicked Answer Buttons is 2 at the same time
+            {
+                GameObject PreviousButtonMark = ClickMarks[v_Last_ClickedButtonIndex]; //Get Prevous Click Mark (on the Previous Clicked Answer Button)
+                PreviousButtonMark.SetActive(false); //Hide the Previous Click Mark
+                v_ClickedButtons_Quantity = 1; // Return the Quality of Clicked Buttons to 1
+            }
+
+            v_Last_ClickedButtonIndex = Index_ClickedButton; //Update the Index of Last Clicked Button
+            LastClickedButton = clickedButton; //Update Last Clicked Button to the CURRENT
         }
 
-        v_Last_ClickedButtonIndex = Index_ClickedButton; //Update the Index of Last Clicked Button
+        Func_CheckAnswer();
 
+    }
+
+    public void Func_CheckAnswer()
+    {
+
+    }
+
+    void Func_RepairLists()
+    {
+        List_Answers.Clear(); //Clear ALL List Answers
+        List_Answers.AddRange(Arr_Groups); //Add again the Groups Array to Answers List
+
+        _List_AnsButtonsText.Clear(); //Clear ALL List Buttons Text
+        _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); //Add again the ButtonsText Array to Buttons Text List
+    }
+
+    //Next Question Function
+    public void Func_Next()
+    {
+        if(v_ClickedButtons_Quantity == 1) // If it have 1 Clicked Answer Button
+        {
+            v_ClickedButtons_Quantity = 0; // Reset to none Clicked Answer Button
+            LastClickedButton = null;
+
+            //Score Functionality
+
+            Func_UpdateQuestionNumber(); // Update Questions Quantity and Text
+            Func_HideClickMark(); // Reset Click Marks
+            Func_RepairLists();
+            Func_GenQuestionImage(); // Generate New Question Image
+            Func_GenButtonsAnswers(); // Generate New Answers
+
+        }
     }
 
     //Quit Quiz Function
@@ -130,6 +202,8 @@ public class S_Quiz : MonoBehaviour
         Func_VisualizeQuizPanel(false); //Hide Quiz Canvas and Objects
         _CtryCanvas.Func_VisualizeCategoriesPanel(true); //Show Category Canvas and Objects
         Func_HideClickMark();
+        v_QuestionNumber = 0;
+        Func_UpdateQuestionNumber();
     }
 
 }

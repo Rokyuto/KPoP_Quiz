@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 27147897}
   - component: {fileID: 27147896}
   - component: {fileID: 27147895}
+  - component: {fileID: 27147898}
   m_Layer: 5
   m_Name: Ans3Button
   m_TagString: Untagged
@@ -258,6 +259,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27147893}
   m_CullTransparentMesh: 1
+--- !u!114 &27147898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27147893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7620ee9b7b70c048ad40dd23a5008f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AnsButton: {fileID: 27147895}
+  _AnsButtonText: {fileID: 1008071720}
 --- !u!1 &32606842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1037,7 @@ MonoBehaviour:
   _CategoriesMenu: {fileID: 879660260}
   _StartupCanvas: {fileID: 0}
   _QuizCanvas: {fileID: 895827251}
+  QuizQuestion: 
 --- !u!1 &559968935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1050,7 @@ GameObject:
   - component: {fileID: 559968938}
   - component: {fileID: 559968937}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Ans2Button_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1055,8 +1071,8 @@ RectTransform:
   m_Father: {fileID: 1799066624}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.1, y: 0}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1107,8 +1123,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1431,6 +1447,7 @@ MonoBehaviour:
   _CategoriesMenu: {fileID: 879660260}
   _StartupCanvas: {fileID: 0}
   _QuizCanvas: {fileID: 895827251}
+  QuizQuestion: 
 --- !u!1 &660825822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1587,7 @@ MonoBehaviour:
   _CategoriesMenu: {fileID: 879660260}
   _StartupCanvas: {fileID: 0}
   _QuizCanvas: {fileID: 895827251}
+  QuizQuestion: Guess the Group
 --- !u!1 &715290927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 895827251}
         m_TargetAssemblyTypeName: S_Quiz, Assembly-CSharp
-        m_MethodName: Func_UpdateQuestionNumber
+        m_MethodName: Func_Next
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2112,6 +2130,7 @@ MonoBehaviour:
   _CategoriesMenu: {fileID: 879660260}
   _StartupCanvas: {fileID: 0}
   _QuizCanvas: {fileID: 895827251}
+  QuizQuestion: 
 --- !u!1 &786561112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,6 +2241,7 @@ MonoBehaviour:
   _CategoriesMenu: {fileID: 879660260}
   _StartupCanvas: {fileID: 1325998869}
   _QuizCanvas: {fileID: 895827251}
+  QuizQuestion: 
 --- !u!222 &786561116
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2641,6 +2661,14 @@ MonoBehaviour:
   _QuizCanvas: {fileID: 895827249}
   _QuestionTextMesh: {fileID: 400119684}
   _QuestionNumberTextMesh: {fileID: 852500196}
+  _Arr_AnsButtonsText:
+  - {fileID: 2058430428}
+  - {fileID: 559968937}
+  - {fileID: 1008071720}
+  _List_AnsButtonsText:
+  - {fileID: 2058430428}
+  - {fileID: 559968937}
+  - {fileID: 1008071720}
   QuitButton: {fileID: 957399286}
   NextButton: {fileID: 737010107}
   AnsButtons:
@@ -2657,7 +2685,15 @@ MonoBehaviour:
   _Arr_GuessGroupsImgs:
   - {fileID: 21300000, guid: 1f7a86a19606ec149872155aea46ecc3, type: 3}
   - {fileID: 21300000, guid: 88d40f397c285cd429dfaa5f017b09e8, type: 3}
+  - {fileID: 21300000, guid: edffd741188c50442b0f8d687704f8c1, type: 3}
+  - {fileID: 21300000, guid: 30301b5706fc4fd41bc6d3de2b9b5372, type: 3}
   _CtryCanvas: {fileID: 879660260}
+  List_Answers: []
+  Arr_Groups:
+  - BLACKPINK
+  - TWICE
+  - ITZY
+  - DREAMCATCHER
 --- !u!1 &941881168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2833,7 @@ MonoBehaviour:
   _CategoriesMenu: {fileID: 879660260}
   _StartupCanvas: {fileID: 0}
   _QuizCanvas: {fileID: 895827251}
+  QuizQuestion: 
 --- !u!1 &957399284
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,7 +3115,7 @@ GameObject:
   - component: {fileID: 1008071721}
   - component: {fileID: 1008071720}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Ans3_Button_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3099,8 +3136,8 @@ RectTransform:
   m_Father: {fileID: 27147894}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.1, y: 0}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3151,8 +3188,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3883,6 +3920,7 @@ MonoBehaviour:
   _CategoriesMenu: {fileID: 879660260}
   _StartupCanvas: {fileID: 0}
   _QuizCanvas: {fileID: 895827251}
+  QuizQuestion: 
 --- !u!1 &1446454375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4022,6 +4060,7 @@ MonoBehaviour:
   _CategoriesMenu: {fileID: 879660260}
   _StartupCanvas: {fileID: 0}
   _QuizCanvas: {fileID: 895827251}
+  QuizQuestion: 
 --- !u!1 &1465443776
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,6 +4286,7 @@ GameObject:
   - component: {fileID: 1572133877}
   - component: {fileID: 1572133876}
   - component: {fileID: 1572133875}
+  - component: {fileID: 1572133878}
   m_Layer: 5
   m_Name: Ans1Button
   m_TagString: Untagged
@@ -4370,6 +4410,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572133873}
   m_CullTransparentMesh: 1
+--- !u!114 &1572133878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572133873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7620ee9b7b70c048ad40dd23a5008f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AnsButton: {fileID: 1572133875}
+  _AnsButtonText: {fileID: 2058430428}
 --- !u!1 &1635430121
 GameObject:
   m_ObjectHideFlags: 0
@@ -4597,6 +4651,7 @@ GameObject:
   - component: {fileID: 1799066627}
   - component: {fileID: 1799066626}
   - component: {fileID: 1799066625}
+  - component: {fileID: 1799066628}
   m_Layer: 5
   m_Name: Ans2Button
   m_TagString: Untagged
@@ -4720,6 +4775,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799066623}
   m_CullTransparentMesh: 1
+--- !u!114 &1799066628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799066623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7620ee9b7b70c048ad40dd23a5008f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AnsButton: {fileID: 1799066625}
+  _AnsButtonText: {fileID: 559968937}
 --- !u!1 &1808756598
 GameObject:
   m_ObjectHideFlags: 0
@@ -5329,7 +5398,7 @@ GameObject:
   - component: {fileID: 2058430429}
   - component: {fileID: 2058430428}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Ans1Button_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5350,8 +5419,8 @@ RectTransform:
   m_Father: {fileID: 1572133874}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.1, y: 0}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5402,8 +5471,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5438,7 +5507,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.38560486, y: 0, z: 0.0060291323, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
