@@ -2685,18 +2685,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 88d40f397c285cd429dfaa5f017b09e8, type: 3}
   - {fileID: 21300000, guid: edffd741188c50442b0f8d687704f8c1, type: 3}
   - {fileID: 21300000, guid: 30301b5706fc4fd41bc6d3de2b9b5372, type: 3}
+  - {fileID: 21300000, guid: 87ea7ed34eae87e43bd4615e484efd22, type: 3}
   _List_GuessGroupsImgs:
   - {fileID: 21300000, guid: 1f7a86a19606ec149872155aea46ecc3, type: 3}
   - {fileID: 21300000, guid: 88d40f397c285cd429dfaa5f017b09e8, type: 3}
   - {fileID: 21300000, guid: edffd741188c50442b0f8d687704f8c1, type: 3}
   - {fileID: 21300000, guid: 30301b5706fc4fd41bc6d3de2b9b5372, type: 3}
+  - {fileID: 21300000, guid: 87ea7ed34eae87e43bd4615e484efd22, type: 3}
   _CtryCanvas: {fileID: 879660260}
   List_Answers: []
-  Arr_Groups:
+  Arr_GroupsNames:
   - BLACKPINK
   - TWICE
   - ITZY
   - DREAMCATCHER
+  - Red Velvet
 --- !u!1 &941881168
 GameObject:
   m_ObjectHideFlags: 0

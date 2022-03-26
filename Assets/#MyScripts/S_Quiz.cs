@@ -51,7 +51,7 @@ public class S_Quiz : MonoBehaviour
     public List<string> List_Answers = new List<string>(); //List Quiz Answers
 
     //Quiz Answers Arrays
-    public string[] Arr_GroupsNames = { "BLACKPINK", "TWICE", "ITZY" , "DREAMCATCHER"}; //Array Guess Group
+    public string[] Arr_GroupsNames; //Array Guess Group
 
     // Start is called before the first frame update
     void Start()
@@ -229,6 +229,10 @@ public class S_Quiz : MonoBehaviour
         //Reset the List with GuessGroup Images 
         _List_GuessGroupsImgs.Clear();
         _List_GuessGroupsImgs.AddRange(_Arr_GuessGroupsImgs);
+
+        List_Answers.Clear(); //Clear Answers List
+        _List_AnsButtonsText.Clear();
+        _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText);
     }
 
 }
