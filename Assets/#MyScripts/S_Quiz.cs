@@ -11,7 +11,7 @@ public class S_Quiz : MonoBehaviour
     //Quiz Canvas Objects
     public Canvas _QuizCanvas; // Create Canvas Object to Initialize Quiz Canvas from the Scene
 
-    public TextMeshProUGUI _QuestionTextMesh; // Question Text Mesh
+    public TextMeshProUGUI _QuizTaskTextMesh; // Quiz Task Text Mesh
     public TextMeshProUGUI _QuestionNumberTextMesh; // Question Number Text Mesh
 
     public TextMeshProUGUI[] _Arr_AnsButtonsText; // Array with Answer Buttons Texts
@@ -19,6 +19,7 @@ public class S_Quiz : MonoBehaviour
 
     public Button QuitButton; // QuitButton
     public Button NextButton; // NextButton
+    public Button NextQuizButton; //Next Quiz Button when the Quiz END
 
     public Button[] AnsButtons; // Array with AnsButtons
     public GameObject[] ClickMarks; // Array with ClickMarks
@@ -37,15 +38,14 @@ public class S_Quiz : MonoBehaviour
     int v_Last_ClickedButtonIndex = -1; // Last Clicked Answer Button Index
     int v_ClickedButtons_Quantity; // Check Quantity of Clicked Answer Buttons 
     int v_QuestionNumber = 0; // Tracker Question Number
-    int v_QuestionsQuantity = 20; // Questions Quantity in the Quiz
+    int v_QuestionsQuantity = 30; // Questions Quantity in the Quiz
     int v_CorrectScore = 0; //Score for Correct Answers
     int v_WrongScore = 0; //Score for Wrong Answers
+    int v_Index_QuestionImage; //Question Image Index
+    string v_QuestionImageName; // Question Image Name (Correct Question Answer)
 
     Button LastClickedButton = null; // Tracker Last Clicked Button
     Button v_ClickedButton = null; //Tracker for Clicked Button when Next Button is Pressed to Check is the Answer Correct
-
-    string v_QuestionImageName; // Question Image Name (Correct Question Answer)
-    int v_Index_QuestionPicture;
 
     //Answers objects
     public List<string> List_Answers = new List<string>(); //List Quiz Answers
@@ -57,29 +57,55 @@ public class S_Quiz : MonoBehaviour
     void Start()
     {
         Func_VisualizeQuizPanel(false); //Visualize Quiz Panel
-        Func_UpdateQuestionNumber(); //Update Question Number
-        Func_HideClickMark(); //Hide Click Marks
     }
 
     //Update Quiz Canvas Visibility
     public void Func_VisualizeQuizPanel(bool isActive)
     {
-        if(isActive == true)
+        if (isActive == true)
         {
+            Func_UpdateQuestionNumber(); //Update Question Number
+            Func_HideClickMark(); //Hide Click Marks
+
             _QuizCanvas.gameObject.SetActive(true); //Show Quiz Canvas and Objects     
-            Func_GenQuestionImage(); //Generate Random Question Image
-            Func_GenButtonsAnswers(); //Generate Buttons Answers Texts
+            //Func_GenQuestionImage(); //Generate Random Question Image
+            //Func_GenButtonsAnswers(); //Generate Buttons Answers Texts
+            Func_VisualizeElements(isActive); // Show Quiz Elements
+            NextQuizButton.gameObject.SetActive(false);
         }
         else
         {
             _QuizCanvas.gameObject.SetActive(false); //Hide Quiz Canvas and Objects
+            Func_VisualizeElements(isActive); //Hide Quiz ELements
+            v_QuestionNumber = 0;
         }
+    }
+
+    //Update Quiz Elements Visibility - MOST IMPORTANT WHEN THE QUIZ END
+    void Func_VisualizeElements(bool isActive)
+    {
+        //Quiz Task Text
+        _QuizTaskTextMesh.gameObject.SetActive(isActive);
+
+        // Quiz Question Canvas Elenets
+        _QuestionPicture.gameObject.SetActive(isActive);
+        _QuestionVideoPlayer.gameObject.SetActive(isActive);
+        _QuestionAudioSource.gameObject.SetActive(isActive);
+
+        // Answer Buttons
+        foreach (var Button in AnsButtons)
+        {
+            Button.gameObject.SetActive(isActive);
+        }
+        // Utility Buttons
+        QuitButton.gameObject.SetActive(isActive);
+        NextButton.gameObject.SetActive(isActive);
     }
 
     //Update Question TextMeshPro Content(Text)
     public void Func_UpdateQuestionText(string QuestionText)
     {
-        _QuestionTextMesh.text = QuestionText; //Update Question Text to Loaded Quiz Category Type
+        _QuizTaskTextMesh.text = QuestionText; //Update Question Text to Loaded Quiz Category Type
     }
 
     // Hide Click Marks
@@ -94,14 +120,28 @@ public class S_Quiz : MonoBehaviour
     //Next Question || On Click Next Button
     public void Func_UpdateQuestionNumber()
     {
-        if (v_QuestionNumber < v_QuestionsQuantity)
+        if (v_QuestionNumber < v_QuestionsQuantity) // If the Question Numbers is NOT EQUAL to Max Questions Quantity
         {
             v_QuestionNumber++;
             _QuestionNumberTextMesh.text = "Question " + v_QuestionNumber + " / " + v_QuestionsQuantity;
+            
+            Func_HideClickMark(); // Reset Click Marks
+            Func_UpdateLists(); // Update Quiz Lists
+            Func_GenQuestionImage(); // Generate New Question Image
+            Func_GenButtonsAnswers(); // Generate New Answers
         }
-        else
+        else // The Quiz Ends
         {
             _QuestionNumberTextMesh.text = "All Questions are answered";
+
+            Func_VisualizeElements(false); // Hide Quiz Elements
+            NextQuizButton.gameObject.SetActive(true); //Show Next Quiz Button
+
+            // Reset the List with Guess Groups Images
+            _List_GuessGroupsImgs.Clear();
+            _List_GuessGroupsImgs.AddRange(_Arr_GuessGroupsImgs);
+
+            List_Answers.Clear(); // Clear Answers List
         }
     }
 
@@ -117,8 +157,8 @@ public class S_Quiz : MonoBehaviour
     //Generate Random Question Image from _Arr_GuessGroupsImgs array
     public void Func_GenQuestionImage()
     {
-        v_Index_QuestionPicture = Random.Range( 0, _List_GuessGroupsImgs.Count ); // Generate Random INDEX for Question Picture
-        _QuestionPicture.sprite = _List_GuessGroupsImgs[v_Index_QuestionPicture]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
+        v_Index_QuestionImage = Random.Range( 0, _List_GuessGroupsImgs.Count ); // Generate Random INDEX for Question Picture
+        _QuestionPicture.sprite = _List_GuessGroupsImgs[v_Index_QuestionImage]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
         v_QuestionImageName = _QuestionPicture.sprite.name; //GET the NAME of the IMAGE
     }
 
@@ -191,7 +231,7 @@ public class S_Quiz : MonoBehaviour
         _List_AnsButtonsText.Clear(); // Clear ALL List Buttons Text
         _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); // Add again the ButtonsText Array to Buttons Text List
 
-        _List_GuessGroupsImgs.RemoveAt(v_Index_QuestionPicture); // Remove the Question Image 
+        _List_GuessGroupsImgs.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
     }
 
     //Next Question Function
@@ -206,11 +246,6 @@ public class S_Quiz : MonoBehaviour
             Func_CheckAnswer(v_ClickedButton); //Check is the Player Answer Correct
 
             Func_UpdateQuestionNumber(); // Update Questions Quantity and Text
-            Func_HideClickMark(); // Reset Click Marks
-            Func_UpdateLists(); // Update Quiz Lists
-            Func_GenQuestionImage(); // Generate New Question Image
-            Func_GenButtonsAnswers(); // Generate New Answers
-
         }
     }
 
@@ -234,4 +269,12 @@ public class S_Quiz : MonoBehaviour
         _List_AnsButtonsText.Clear(); // Clear Answer Buttons Text List
         _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); // Fill Again Answer Buttons Text List
     }
+
+    public void Func_NextQuiz()
+    {
+        Func_VisualizeQuizPanel(false); // Hide Quiz Canvas and Objects
+        _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas and Objects
+        v_QuestionNumber = 0; // Reset to 0 Question Number
+    }
+
 }
