@@ -2686,12 +2686,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: edffd741188c50442b0f8d687704f8c1, type: 3}
   - {fileID: 21300000, guid: 30301b5706fc4fd41bc6d3de2b9b5372, type: 3}
   - {fileID: 21300000, guid: 87ea7ed34eae87e43bd4615e484efd22, type: 3}
+  - {fileID: 21300000, guid: e5b27273131a9ec40a1f39135ace0bfc, type: 3}
+  - {fileID: 21300000, guid: 3d4bd5f504152ad4fb9ea7d014a72063, type: 3}
+  - {fileID: 21300000, guid: 0ae0beb45b0cb0c4a82322fb7948f26f, type: 3}
+  - {fileID: 21300000, guid: a5252a32b8f85ae4cbdca01f4d673151, type: 3}
   _List_GuessGroupsImgs:
   - {fileID: 21300000, guid: 1f7a86a19606ec149872155aea46ecc3, type: 3}
   - {fileID: 21300000, guid: 88d40f397c285cd429dfaa5f017b09e8, type: 3}
   - {fileID: 21300000, guid: edffd741188c50442b0f8d687704f8c1, type: 3}
   - {fileID: 21300000, guid: 30301b5706fc4fd41bc6d3de2b9b5372, type: 3}
   - {fileID: 21300000, guid: 87ea7ed34eae87e43bd4615e484efd22, type: 3}
+  - {fileID: 21300000, guid: e5b27273131a9ec40a1f39135ace0bfc, type: 3}
+  - {fileID: 21300000, guid: 3d4bd5f504152ad4fb9ea7d014a72063, type: 3}
+  - {fileID: 21300000, guid: 0ae0beb45b0cb0c4a82322fb7948f26f, type: 3}
+  - {fileID: 21300000, guid: a5252a32b8f85ae4cbdca01f4d673151, type: 3}
   _CtryCanvas: {fileID: 879660260}
   List_Answers: []
   Arr_GroupsNames:
@@ -2700,6 +2708,10 @@ MonoBehaviour:
   - ITZY
   - DREAMCATCHER
   - Red Velvet
+  - MAMAMOO
+  - LOONA
+  - (G)I-DLE
+  - Weki Meki
 --- !u!1 &941881168
 GameObject:
   m_ObjectHideFlags: 0

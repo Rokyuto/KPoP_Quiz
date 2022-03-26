@@ -131,12 +131,12 @@ public class S_Quiz : MonoBehaviour
         _List_AnsButtonsText.RemoveAt(v_CorrectButtonTextIndex); // REMOVE the INDEX of the CORRECT BUTTON TEXT
         List_Answers.Remove(v_QuestionImageName); // REMOVE the CORRECT ANSWER (STRING) from Answers List
 
-        foreach(var ButtonText in _List_AnsButtonsText)
+        foreach(var ButtonsText in _List_AnsButtonsText)
         { 
-            var v_WrongButtonsTextIndex = Random.Range(0, _List_AnsButtonsText.Count);
-            ButtonText.text = List_Answers[v_WrongButtonsTextIndex];
+            var v_WrongButtonsAnswerIndex = Random.Range(0, List_Answers.Count); // Generate Random Wrong Answer from List Answers
+            ButtonsText.text = List_Answers[v_WrongButtonsAnswerIndex]; // Display the Wrong Answer to Current Button Text in the List
 
-            List_Answers.Remove(List_Answers[v_WrongButtonsTextIndex]); // REMOVE the CORRECT ANSWER (STRING) from Answers List
+            List_Answers.Remove(List_Answers[v_WrongButtonsAnswerIndex]); // REMOVE the CORRECT ANSWER (STRING) from Answers List
         }
 
     }
@@ -231,8 +231,7 @@ public class S_Quiz : MonoBehaviour
         _List_GuessGroupsImgs.AddRange(_Arr_GuessGroupsImgs);
 
         List_Answers.Clear(); //Clear Answers List
-        _List_AnsButtonsText.Clear();
-        _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText);
+        _List_AnsButtonsText.Clear(); // Clear Answer Buttons Text List
+        _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); // Fill Again Answer Buttons Text List
     }
-
 }
