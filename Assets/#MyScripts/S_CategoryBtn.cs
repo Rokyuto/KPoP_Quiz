@@ -34,7 +34,7 @@ public class S_CategoryBtn : MonoBehaviour
         {
             case 0:
                 // If QuizQuestion is "Guess the Group" :
-                _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_Groups); // Insert in the List Answers Guess Group Array
+                _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_GroupsNames); // Insert in the List Answers Guess Group Array
                 _QuizCanvas.Func_VisualizeQuestionElements(true,false,false); // Visualize Question Element (Picture, Video, Audio)
                 break;
             case 1:

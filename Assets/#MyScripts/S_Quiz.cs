@@ -28,7 +28,7 @@ public class S_Quiz : MonoBehaviour
     public AudioSource _QuestionAudioSource; // Question Audio Source
 
     public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
-    //public List<Text> _Arr_AnsGuessGroup;
+    public List<Sprite> _List_GuessGroupsImgs; // List with Groups Images for "Guess the Group" Quiz
 
     //Other Game Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
@@ -38,16 +38,20 @@ public class S_Quiz : MonoBehaviour
     int v_ClickedButtons_Quantity; // Check Quantity of Clicked Answer Buttons 
     int v_QuestionNumber = 0; // Tracker Question Number
     int v_QuestionsQuantity = 20; // Questions Quantity in the Quiz
+    int v_CorrectScore = 0; //Score for Correct Answers
+    int v_WrongScore = 0; //Score for Wrong Answers
 
     Button LastClickedButton = null; // Tracker Last Clicked Button
+    Button v_ClickedButton = null; //Tracker for Clicked Button when Next Button is Pressed to Check is the Answer Correct
 
     string v_QuestionImageName; // Question Image Name (Correct Question Answer)
+    int v_Index_QuestionPicture;
 
     //Answers objects
     public List<string> List_Answers = new List<string>(); //List Quiz Answers
 
     //Quiz Answers Arrays
-    public string[] Arr_Groups = { "BLACKPINK", "TWICE", "ITZY" , "DREAMCATCHER"}; //Array Guess Group
+    public string[] Arr_GroupsNames = { "BLACKPINK", "TWICE", "ITZY" , "DREAMCATCHER"}; //Array Guess Group
 
     // Start is called before the first frame update
     void Start()
@@ -113,8 +117,8 @@ public class S_Quiz : MonoBehaviour
     //Generate Random Question Image from _Arr_GuessGroupsImgs array
     public void Func_GenQuestionImage()
     {
-        var v_Index_QuestionPicture = Random.Range( 0, _Arr_GuessGroupsImgs.Length ); // Generate Random INDEX for Question Picture
-        _QuestionPicture.sprite = _Arr_GuessGroupsImgs[v_Index_QuestionPicture]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
+        v_Index_QuestionPicture = Random.Range( 0, _List_GuessGroupsImgs.Count ); // Generate Random INDEX for Question Picture
+        _QuestionPicture.sprite = _List_GuessGroupsImgs[v_Index_QuestionPicture]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
         v_QuestionImageName = _QuestionPicture.sprite.name; //GET the NAME of the IMAGE
     }
 
@@ -157,24 +161,37 @@ public class S_Quiz : MonoBehaviour
 
             v_Last_ClickedButtonIndex = Index_ClickedButton; //Update the Index of Last Clicked Button
             LastClickedButton = clickedButton; //Update Last Clicked Button to the CURRENT
+            v_ClickedButton = clickedButton; // Update the Tracker for Clicked Button when Next Button is Pressed to Check is the Answer Correct
+
         }
 
-        Func_CheckAnswer();
-
     }
 
-    public void Func_CheckAnswer()
+    //Check if the TEXT of the Marked Button is CORRECT
+    public void Func_CheckAnswer(Button v_ClickedButton)
     {
+        var v_ClickedButtonText = v_ClickedButton.GetComponentInChildren<TextMeshProUGUI>(); // Get the Text of the Marked Button 
 
+        if (v_ClickedButtonText.text == v_QuestionImageName) // Check is the Text of the Marked Button is EQUAL to the NAME of the QUESTION IMAGE
+        {
+            v_CorrectScore++; //Increment Score for the Correct Answers
+        }
+        else
+        {
+            v_WrongScore++; //Increment Score for the Wrong Answers
+        }
     }
 
-    void Func_RepairLists()
+    //Update Answers and AnswerButtonsText Lists
+    void Func_UpdateLists()
     {
-        List_Answers.Clear(); //Clear ALL List Answers
-        List_Answers.AddRange(Arr_Groups); //Add again the Groups Array to Answers List
+        List_Answers.Clear(); // Clear ALL List Answers
+        List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
 
-        _List_AnsButtonsText.Clear(); //Clear ALL List Buttons Text
-        _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); //Add again the ButtonsText Array to Buttons Text List
+        _List_AnsButtonsText.Clear(); // Clear ALL List Buttons Text
+        _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); // Add again the ButtonsText Array to Buttons Text List
+
+        _List_GuessGroupsImgs.RemoveAt(v_Index_QuestionPicture); // Remove the Question Image 
     }
 
     //Next Question Function
@@ -182,14 +199,15 @@ public class S_Quiz : MonoBehaviour
     {
         if(v_ClickedButtons_Quantity == 1) // If it have 1 Clicked Answer Button
         {
-            v_ClickedButtons_Quantity = 0; // Reset to none Clicked Answer Button
-            LastClickedButton = null;
+            v_ClickedButtons_Quantity = 0; // Reset to NONE Clicked Answer Button
+            LastClickedButton = null; // Reset to NONE the Last Clicked Button
 
             //Score Functionality
+            Func_CheckAnswer(v_ClickedButton); //Check is the Player Answer Correct
 
             Func_UpdateQuestionNumber(); // Update Questions Quantity and Text
             Func_HideClickMark(); // Reset Click Marks
-            Func_RepairLists();
+            Func_UpdateLists(); // Update Quiz Lists
             Func_GenQuestionImage(); // Generate New Question Image
             Func_GenButtonsAnswers(); // Generate New Answers
 
@@ -199,11 +217,18 @@ public class S_Quiz : MonoBehaviour
     //Quit Quiz Function
     public void Func_Quit()
     {
-        Func_VisualizeQuizPanel(false); //Hide Quiz Canvas and Objects
-        _CtryCanvas.Func_VisualizeCategoriesPanel(true); //Show Category Canvas and Objects
-        Func_HideClickMark();
+        Func_HideClickMark(); // Call the Function to Hide Click Marks
+
+        // Call Function to Update Quiz Question Numbers
         v_QuestionNumber = 0;
         Func_UpdateQuestionNumber();
+
+        Func_VisualizeQuizPanel(false); // Hide Quiz Canvas and Objects
+        _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas and Objects
+
+        //Reset the List with GuessGroup Images 
+        _List_GuessGroupsImgs.Clear();
+        _List_GuessGroupsImgs.AddRange(_Arr_GuessGroupsImgs);
     }
 
 }
