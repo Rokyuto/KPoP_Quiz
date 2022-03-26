@@ -2690,6 +2690,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d4bd5f504152ad4fb9ea7d014a72063, type: 3}
   - {fileID: 21300000, guid: 0ae0beb45b0cb0c4a82322fb7948f26f, type: 3}
   - {fileID: 21300000, guid: a5252a32b8f85ae4cbdca01f4d673151, type: 3}
+  - {fileID: 21300000, guid: e4c9dfd7e7543524f80cfedccc5a4731, type: 3}
+  - {fileID: 21300000, guid: f9531930c675c8048a57062148b9fc6d, type: 3}
+  - {fileID: 21300000, guid: bc40087ab8103f84ab49db56bf96d24f, type: 3}
+  - {fileID: 21300000, guid: bdd904f548f2b4343b1cc8ccb314080c, type: 3}
   _List_GuessGroupsImgs:
   - {fileID: 21300000, guid: 1f7a86a19606ec149872155aea46ecc3, type: 3}
   - {fileID: 21300000, guid: 88d40f397c285cd429dfaa5f017b09e8, type: 3}
@@ -2700,6 +2704,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d4bd5f504152ad4fb9ea7d014a72063, type: 3}
   - {fileID: 21300000, guid: 0ae0beb45b0cb0c4a82322fb7948f26f, type: 3}
   - {fileID: 21300000, guid: a5252a32b8f85ae4cbdca01f4d673151, type: 3}
+  - {fileID: 21300000, guid: e4c9dfd7e7543524f80cfedccc5a4731, type: 3}
+  - {fileID: 21300000, guid: f9531930c675c8048a57062148b9fc6d, type: 3}
+  - {fileID: 21300000, guid: bc40087ab8103f84ab49db56bf96d24f, type: 3}
+  - {fileID: 21300000, guid: bdd904f548f2b4343b1cc8ccb314080c, type: 3}
   _CtryCanvas: {fileID: 879660260}
   List_Answers: []
   Arr_GroupsNames:
@@ -2712,6 +2720,10 @@ MonoBehaviour:
   - LOONA
   - (G)I-DLE
   - Weki Meki
+  - aespa
+  - EVERGLOW
+  - CLC
+  - IZONE
 --- !u!1 &941881168
 GameObject:
   m_ObjectHideFlags: 0
