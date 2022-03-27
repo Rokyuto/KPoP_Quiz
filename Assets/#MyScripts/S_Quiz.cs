@@ -14,6 +14,9 @@ public class S_Quiz : MonoBehaviour
     public TextMeshProUGUI _QuizTaskTextMesh; // Quiz Task Text Mesh
     public TextMeshProUGUI _QuestionNumberTextMesh; // Question Number Text Mesh
 
+    public TextMeshProUGUI _CorrectAnswersText; // Correct Answers Text Object
+    public TextMeshProUGUI _WrongAnswersText; // Wrong Answers Text Object
+
     public TextMeshProUGUI[] _Arr_AnsButtonsText; // Array with Answer Buttons Texts
     public List<TextMeshProUGUI> _List_AnsButtonsText; // List with Answer Buttons Texts
 
@@ -36,6 +39,7 @@ public class S_Quiz : MonoBehaviour
 
     //Other Game Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
+
 
     //Variables
     public int v_QuizIndex; //Initilize which is the Quiz to Generate Question
@@ -64,6 +68,7 @@ public class S_Quiz : MonoBehaviour
     //Quiz Answers Arrays
     public string[] Arr_GroupsNames; //Array with Groups Names
     public string[] Arr_SongsNames; //Array with Songs Names
+
 
     // Start is called before the first frame update
     void Start()
@@ -110,6 +115,10 @@ public class S_Quiz : MonoBehaviour
         // Utility Buttons
         QuitButton.gameObject.SetActive(isActive);
         NextButton.gameObject.SetActive(isActive);
+
+        //Hide Scores Texts
+        _CorrectAnswersText.gameObject.SetActive(false);
+        _WrongAnswersText.gameObject.SetActive(false);
     }
 
     //Update Question TextMeshPro Content(Text)
@@ -130,34 +139,35 @@ public class S_Quiz : MonoBehaviour
     //Next Question || On Click Next Button
     public void Func_UpdateQuestionNumber() 
     {
-        if (v_QuestionNumber < v_QuestionsQuantity - 1) // If the Question Numbers is LESS than 29 ( v_QuestionsQuantity(30) - 1 )
+        v_QuestionNumber++; //Increment Question Number
+
+        if (v_QuestionNumber <= v_QuestionsQuantity - 1) // If the Question Numbers is LESS than 29 ( v_QuestionsQuantity(30) - 1 )
         {
-            v_QuestionNumber++;
-            _QuestionNumberTextMesh.text = "Question " + v_QuestionNumber + " / " + v_QuestionsQuantity;
+            _QuestionNumberTextMesh.text = "Question " + v_QuestionNumber + " / " + v_QuestionsQuantity; // Update Question Number Text
             
             Func_HideClickMark(); // Reset Click Marks
             Func_UpdateLists(); // Update Quiz Lists
 
-            switch(v_QuizIndex)
+            switch (v_QuizIndex)
             {
                 case 0:
-                    _QuestionPicture.enabled = true;
-                    _QuestionAudioSource.enabled = false;
+                    _QuestionPicture.enabled = true; //ENABLE Question Picture Object 
+                    _QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
 
                     List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
                     _List_QuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
 
-                    Func_GenQuestionImgContent(); // Generate New Question Image
+                    Func_GenQuestionImgContent(); // Generate Question Image
                     Func_GenButtonsAnswers(); // Generate Answers
                     break;
 
                 case 1:
-                    _QuestionPicture.enabled = false;
-                    _QuestionAudioSource.enabled = true;
+                    _QuestionPicture.enabled = false; //DISABLE Question Picture Object 
+                    _QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
 
                     List_Answers.AddRange(Arr_SongsNames); // Add again the Groups Array to Answers List
 
-                    Func_GenQuestionAudioContent();
+                    Func_GenQuestionAudioContent(); // Generate Question Audio
                     Func_GenButtonsAnswers(); // Generate Answers
                     break;
             }
@@ -168,12 +178,20 @@ public class S_Quiz : MonoBehaviour
             _QuestionNumberTextMesh.text = "All Questions are answered";
 
             Func_VisualizeElements(false); // Hide Quiz Elements
+
+            //Show Scores
+            _CorrectAnswersText.gameObject.SetActive(true);
+            _CorrectAnswersText.text = "Correct Answers: " + v_CorrectScore;
+            _WrongAnswersText.gameObject.SetActive(true);
+            _WrongAnswersText.text = "Wrong Answers: " + v_WrongScore;
+
             NextQuizButton.gameObject.SetActive(true); //Show Next Quiz Button
 
             // Reset the List with Guess Groups Images
             _List_QuessImage.Clear();
 
             List_Answers.Clear(); // Clear Answers List
+
         }
     }
 
@@ -264,8 +282,6 @@ public class S_Quiz : MonoBehaviour
     void Func_UpdateLists()
     {
         List_Answers.Clear(); // Clear ALL List Answers
-        /*List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
-        _List_QuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image */
 
         _List_AnsButtonsText.Clear(); // Clear ALL List Buttons Text
         _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); // Add again the ButtonsText Array to Buttons Text List
@@ -311,6 +327,10 @@ public class S_Quiz : MonoBehaviour
         v_QuestionNumber = 0; // Reset to 0 Question Number
         Func_VisualizeQuizPanel(false); // Hide Quiz Canvas and Objects
         _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas and Objects
+
+        //Reset Score
+        v_CorrectScore = 0;
+        v_WrongScore = 0;
     }
 
 }

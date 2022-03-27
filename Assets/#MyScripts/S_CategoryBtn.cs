@@ -55,14 +55,7 @@ public class S_CategoryBtn : MonoBehaviour
         _QuizCanvas.Func_UpdateTaskText(QuizTask); //Update Question Text Content
 
         //Load Next Canvas on Button Clicked
-        if (_ClickedButtonIndex < _CategoriesMenu._CategoriesButtons.Length - 1) //If Clicked Button is EVERYONE EXCEPT BACK BUTTON
-        {
-            LoadQuizCanvas(); //Load Quiz Canvas
-        }
-        else //If Clicked Button is BACK BUTTON
-        {
-            Func_Back(); //Go one step back - to Startup Canvas
-        }
+        LoadQuizCanvas();
     }
 
     //Load Quiz Canvas
@@ -73,11 +66,10 @@ public class S_CategoryBtn : MonoBehaviour
     }
 
     //Go Back to Category Canvas
-    void Func_Back()
+    public void Func_Back()
     {
         _CategoriesMenu.Func_VisualizeCategoriesPanel(false); //Hide Category Canvas
         _StartupCanvas.Func_ShowStartupCanvas(); //Show Startup Canvas
     }
-}
 
-//Debug.Log(); //DEBUG :: Print
+}
