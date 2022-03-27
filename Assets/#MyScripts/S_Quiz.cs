@@ -29,18 +29,29 @@ public class S_Quiz : MonoBehaviour
     public AudioSource _QuestionAudioSource; // Question Audio Source
 
     public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
-    public List<Sprite> _List_GuessGroupsImgs; // List with Groups Images for "Guess the Group" Quiz
+    public List<Sprite> _List_QuessImage; // List with Groups Images
+
+    public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
+    public List<AudioClip> _List_QuessAudio; // List with Songs Audios
 
     //Other Game Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
 
     //Variables
+    public int v_QuizIndex; //Initilize which is the Quiz to Generate Question
+
     int v_Last_ClickedButtonIndex = -1; // Last Clicked Answer Button Index
     int v_ClickedButtons_Quantity; // Check Quantity of Clicked Answer Buttons 
+
     int v_QuestionNumber = 0; // Tracker Question Number
     int v_QuestionsQuantity = 30; // Questions Quantity in the Quiz
+
     int v_CorrectScore = 0; //Score for Correct Answers
     int v_WrongScore = 0; //Score for Wrong Answers
+
+    int v_Index_QuestionAudio; // Question Audio Index
+    string v_QuestionAudioName; // Question Audio Name (Correct Question Answer)
+
     int v_Index_QuestionImage; //Question Image Index
     string v_QuestionImageName; // Question Image Name (Correct Question Answer)
 
@@ -51,7 +62,8 @@ public class S_Quiz : MonoBehaviour
     public List<string> List_Answers = new List<string>(); //List Quiz Answers
 
     //Quiz Answers Arrays
-    public string[] Arr_GroupsNames; //Array Guess Group
+    public string[] Arr_GroupsNames; //Array with Groups Names
+    public string[] Arr_SongsNames; //Array with Songs Names
 
     // Start is called before the first frame update
     void Start()
@@ -68,8 +80,6 @@ public class S_Quiz : MonoBehaviour
             Func_HideClickMark(); //Hide Click Marks
 
             _QuizCanvas.gameObject.SetActive(true); //Show Quiz Canvas and Objects     
-            //Func_GenQuestionImage(); //Generate Random Question Image
-            //Func_GenButtonsAnswers(); //Generate Buttons Answers Texts
             Func_VisualizeElements(isActive); // Show Quiz Elements
             NextQuizButton.gameObject.SetActive(false);
         }
@@ -103,9 +113,9 @@ public class S_Quiz : MonoBehaviour
     }
 
     //Update Question TextMeshPro Content(Text)
-    public void Func_UpdateQuestionText(string QuestionText)
+    public void Func_UpdateTaskText(string TaskText)
     {
-        _QuizTaskTextMesh.text = QuestionText; //Update Question Text to Loaded Quiz Category Type
+        _QuizTaskTextMesh.text = TaskText; //Update Question Text to Loaded Quiz Category Type
     }
 
     // Hide Click Marks
@@ -118,7 +128,7 @@ public class S_Quiz : MonoBehaviour
     }
 
     //Next Question || On Click Next Button
-    public void Func_UpdateQuestionNumber()
+    public void Func_UpdateQuestionNumber() 
     {
         if (v_QuestionNumber < v_QuestionsQuantity - 1) // If the Question Numbers is LESS than 29 ( v_QuestionsQuantity(30) - 1 )
         {
@@ -127,10 +137,33 @@ public class S_Quiz : MonoBehaviour
             
             Func_HideClickMark(); // Reset Click Marks
             Func_UpdateLists(); // Update Quiz Lists
-            Func_GenQuestionImage(); // Generate New Question Image
-            Func_GenButtonsAnswers(); // Generate New Answers
+
+            switch(v_QuizIndex)
+            {
+                case 0:
+                    _QuestionPicture.enabled = true;
+                    _QuestionAudioSource.enabled = false;
+
+                    List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
+                    _List_QuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
+
+                    Func_GenQuestionImgContent(); // Generate New Question Image
+                    Func_GenButtonsAnswers(); // Generate Answers
+                    break;
+
+                case 1:
+                    _QuestionPicture.enabled = false;
+                    _QuestionAudioSource.enabled = true;
+
+                    List_Answers.AddRange(Arr_SongsNames); // Add again the Groups Array to Answers List
+
+                    Func_GenQuestionAudioContent();
+                    Func_GenButtonsAnswers(); // Generate Answers
+                    break;
+            }
+
         }
-        else // The Quiz Ends
+        else // The Quiz Ends (Question Number = 30 (Questions Quantity)
         {
             _QuestionNumberTextMesh.text = "All Questions are answered";
 
@@ -138,35 +171,40 @@ public class S_Quiz : MonoBehaviour
             NextQuizButton.gameObject.SetActive(true); //Show Next Quiz Button
 
             // Reset the List with Guess Groups Images
-            _List_GuessGroupsImgs.Clear();
-            _List_GuessGroupsImgs.AddRange(_Arr_GuessGroupsImgs);
+            _List_QuessImage.Clear();
 
             List_Answers.Clear(); // Clear Answers List
         }
     }
 
-    //Update Visibility of Question Elements
-    public void Func_VisualizeQuestionElements(bool isPictureVisible, bool isVideoVisible, bool isAudioVisible)
+    //Generate Random Question Image from _List_QuessImage List
+    public void Func_GenQuestionImgContent()
     {
-        _QuestionPicture.gameObject.SetActive(isPictureVisible);
-        _QuestionVideoPlayer.gameObject.SetActive(isVideoVisible);
-        _QuestionAudioSource.gameObject.SetActive(isAudioVisible);
-
+        v_Index_QuestionImage = Random.Range( 0, _List_QuessImage.Count ); // Generate Random INDEX for Question Picture
+        _QuestionPicture.sprite = _List_QuessImage[v_Index_QuestionImage]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
+        v_QuestionImageName = _QuestionPicture.sprite.name; //GET the NAME of the IMAGE
     }
 
-    //Generate Random Question Image from _Arr_GuessGroupsImgs array
-    public void Func_GenQuestionImage()
+    //Generate Random Question Audio from _List_QuessAudio List
+    public void Func_GenQuestionAudioContent()
     {
-        v_Index_QuestionImage = Random.Range( 0, _List_GuessGroupsImgs.Count ); // Generate Random INDEX for Question Picture
-        _QuestionPicture.sprite = _List_GuessGroupsImgs[v_Index_QuestionImage]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
-        v_QuestionImageName = _QuestionPicture.sprite.name; //GET the NAME of the IMAGE
+        v_Index_QuestionAudio = Random.Range(0, _List_QuessAudio.Count); // Generate Random INDEX for Question Picture
+        _QuestionAudioSource.clip = _List_QuessAudio[v_Index_QuestionAudio]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
+        v_QuestionAudioName = _QuestionAudioSource.clip.name; //GET the NAME of the IMAGE
     }
 
     //Generate Question Answers and CHANGE the Buttons Text to them 
     public void Func_GenButtonsAnswers()
     {
         var v_CorrectButtonTextIndex = Random.Range(0, _List_AnsButtonsText.Count); // Generate Random Index of the Correct Buttons Text List which will contains the Correct Answer
-        _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+        if(v_QuizIndex == 0)
+        {
+            _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+        }
+        else if(v_QuizIndex == 1)
+        {
+            _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+        }
 
         _List_AnsButtonsText.RemoveAt(v_CorrectButtonTextIndex); // REMOVE the INDEX of the CORRECT BUTTON TEXT
         List_Answers.Remove(v_QuestionImageName); // REMOVE the CORRECT ANSWER (STRING) from Answers List
@@ -226,12 +264,12 @@ public class S_Quiz : MonoBehaviour
     void Func_UpdateLists()
     {
         List_Answers.Clear(); // Clear ALL List Answers
-        List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
+        /*List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
+        _List_QuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image */
 
         _List_AnsButtonsText.Clear(); // Clear ALL List Buttons Text
         _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); // Add again the ButtonsText Array to Buttons Text List
 
-        _List_GuessGroupsImgs.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
     }
 
     //Next Question Function
@@ -256,14 +294,12 @@ public class S_Quiz : MonoBehaviour
 
         // Call Function to Update Quiz Question Numbers
         v_QuestionNumber = 0;
-        Func_UpdateQuestionNumber();
 
         Func_VisualizeQuizPanel(false); // Hide Quiz Canvas and Objects
         _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas and Objects
 
         //Reset the List with GuessGroup Images 
-        _List_GuessGroupsImgs.Clear();
-        _List_GuessGroupsImgs.AddRange(_Arr_GuessGroupsImgs);
+        _List_QuessImage.Clear();
 
         List_Answers.Clear(); //Clear Answers List
         _List_AnsButtonsText.Clear(); // Clear Answer Buttons Text List
@@ -272,9 +308,9 @@ public class S_Quiz : MonoBehaviour
 
     public void Func_NextQuiz()
     {
+        v_QuestionNumber = 0; // Reset to 0 Question Number
         Func_VisualizeQuizPanel(false); // Hide Quiz Canvas and Objects
         _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas and Objects
-        v_QuestionNumber = 0; // Reset to 0 Question Number
     }
 
 }
