@@ -120,7 +120,7 @@ public class S_Quiz : MonoBehaviour
     //Next Question || On Click Next Button
     public void Func_UpdateQuestionNumber()
     {
-        if (v_QuestionNumber < v_QuestionsQuantity) // If the Question Numbers is NOT EQUAL to Max Questions Quantity
+        if (v_QuestionNumber < v_QuestionsQuantity - 1) // If the Question Numbers is LESS than 29 ( v_QuestionsQuantity(30) - 1 )
         {
             v_QuestionNumber++;
             _QuestionNumberTextMesh.text = "Question " + v_QuestionNumber + " / " + v_QuestionsQuantity;

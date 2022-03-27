@@ -35,31 +35,25 @@ public class S_CategoryBtn : MonoBehaviour
             case 0:
                 // If QuizQuestion is "Guess the Group" :
                 _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_GroupsNames); // Insert in the List Answers Guess Group Array
-                _QuizCanvas.Func_VisualizeQuestionElements(true,false,false); // Visualize Question Element (Picture, Video, Audio)
+                //_QuizCanvas.Func_GenQuestionImage();
                 break;
             case 1:
                 QuizQuestion = "Guess the Song";
-                _QuizCanvas.Func_VisualizeQuestionElements(false, false, true);
                 break;
             case 2:
                 QuizQuestion = "Guess the Idol";
-                _QuizCanvas.Func_VisualizeQuestionElements(true, false, false);
                 break;
             case 3:
                 QuizQuestion = "Guess the Idol who Sing";
-                _QuizCanvas.Func_VisualizeQuestionElements(false, false, true);
                 break;
             case 4:
                 QuizQuestion = "Guess song part performer";
-                _QuizCanvas.Func_VisualizeQuestionElements(false, false, true);
                 break;
             case 5:
                 QuizQuestion = "Guess which song the dance is from";
-                _QuizCanvas.Func_VisualizeQuestionElements(false, true, false);
                 break;
             case 6:
                 QuizQuestion = "Guess Idol Nationality";
-                _QuizCanvas.Func_VisualizeQuestionElements(true, false, false);
                 break;
 
         }
