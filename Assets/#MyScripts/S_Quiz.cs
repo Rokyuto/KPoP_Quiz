@@ -16,6 +16,7 @@ public class S_Quiz : MonoBehaviour
 
     public TextMeshProUGUI _CorrectAnswersText; // Correct Answers Text Object
     public TextMeshProUGUI _WrongAnswersText; // Wrong Answers Text Object
+    public TextMeshProUGUI _BestScoreText;
 
     public TextMeshProUGUI[] _Arr_AnsButtonsText; // Array with Answer Buttons Texts
     public List<TextMeshProUGUI> _List_AnsButtonsText; // List with Answer Buttons Texts
@@ -37,9 +38,9 @@ public class S_Quiz : MonoBehaviour
     public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
     public List<AudioClip> _List_QuessAudio; // List with Songs Audios
 
-    //Other Game Objects
+    //Other Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
-
+    S_ScoreManager _ScoreManager; // Screate Score Manager Object
 
     //Variables
     public int v_QuizIndex; //Initilize which is the Quiz to Generate Question
@@ -50,14 +51,15 @@ public class S_Quiz : MonoBehaviour
     int v_QuestionNumber = 0; // Tracker Question Number
     int v_QuestionsQuantity = 30; // Questions Quantity in the Quiz
 
-    int v_CorrectScore = 0; //Score for Correct Answers
-    int v_WrongScore = 0; //Score for Wrong Answers
+    public int v_CorrectScore = 0; //Score for Correct Answers
+    public int v_WrongScore = 0; //Score for Wrong Answers
 
     int v_Index_QuestionAudio; // Question Audio Index
     string v_QuestionAudioName; // Question Audio Name (Correct Question Answer)
 
     int v_Index_QuestionImage; //Question Image Index
     string v_QuestionImageName; // Question Image Name (Correct Question Answer)
+    string v_CorrectAnswer; // Correct Answer Variable
 
     Button LastClickedButton = null; // Tracker Last Clicked Button
     Button v_ClickedButton = null; //Tracker for Clicked Button when Next Button is Pressed to Check is the Answer Correct
@@ -73,6 +75,8 @@ public class S_Quiz : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _ScoreManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<S_ScoreManager>(); // Initialize the S_ScoreManager Script from the BestScoreText (this Object has "Manager" tag )
+
         Func_VisualizeQuizPanel(false); //Visualize Quiz Panel
     }
 
@@ -92,7 +96,7 @@ public class S_Quiz : MonoBehaviour
         {
             _QuizCanvas.gameObject.SetActive(false); //Hide Quiz Canvas and Objects
             Func_VisualizeElements(isActive); //Hide Quiz ELements
-            v_QuestionNumber = 0;
+            v_QuestionNumber = 0; // Reset Question Number
         }
     }
 
@@ -119,6 +123,7 @@ public class S_Quiz : MonoBehaviour
         //Hide Scores Texts
         _CorrectAnswersText.gameObject.SetActive(false);
         _WrongAnswersText.gameObject.SetActive(false);
+        _BestScoreText.gameObject.SetActive(false);
     }
 
     //Update Question TextMeshPro Content(Text)
@@ -141,7 +146,7 @@ public class S_Quiz : MonoBehaviour
     {
         v_QuestionNumber++; //Increment Question Number
 
-        if (v_QuestionNumber <= v_QuestionsQuantity - 1) // If the Question Numbers is LESS than 29 ( v_QuestionsQuantity(30) - 1 )
+        if (v_QuestionNumber <= v_QuestionsQuantity) // If the Question Numbers <= v_QuestionsQuantity(30) )
         {
             _QuestionNumberTextMesh.text = "Question " + v_QuestionNumber + " / " + v_QuestionsQuantity; // Update Question Number Text
             
@@ -155,7 +160,6 @@ public class S_Quiz : MonoBehaviour
                     _QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
 
                     List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
-                    _List_QuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
 
                     Func_GenQuestionImgContent(); // Generate Question Image
                     Func_GenButtonsAnswers(); // Generate Answers
@@ -182,15 +186,20 @@ public class S_Quiz : MonoBehaviour
             //Show Scores
             _CorrectAnswersText.gameObject.SetActive(true);
             _CorrectAnswersText.text = "Correct Answers: " + v_CorrectScore;
+
             _WrongAnswersText.gameObject.SetActive(true);
             _WrongAnswersText.text = "Wrong Answers: " + v_WrongScore;
 
             NextQuizButton.gameObject.SetActive(true); //Show Next Quiz Button
 
-            // Reset the List with Guess Groups Images
-            _List_QuessImage.Clear();
+            _List_QuessImage.Clear(); // Reset the List with Guess Image
+            _List_QuessAudio.Clear(); // Reset the List with Guess Audio
+            List_Answers.Clear(); // Reset Answers List
 
-            List_Answers.Clear(); // Clear Answers List
+            //Highscore Functionality
+            _BestScoreText.gameObject.SetActive(true); //Show Best Score Text
+            _ScoreManager.Func_UpadePlayerHighScore(v_CorrectScore); // Call Function to Check Player Score and Update the Hidhscore Data if the CURRENT Player Score is BIGGER than the HIGHSCORE
+            _BestScoreText.text = "Best Score: " + _ScoreManager.v_BestScore; // Print the Best Score
 
         }
     }
@@ -201,6 +210,8 @@ public class S_Quiz : MonoBehaviour
         v_Index_QuestionImage = Random.Range( 0, _List_QuessImage.Count ); // Generate Random INDEX for Question Picture
         _QuestionPicture.sprite = _List_QuessImage[v_Index_QuestionImage]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
         v_QuestionImageName = _QuestionPicture.sprite.name; //GET the NAME of the IMAGE
+
+        _List_QuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
     }
 
     //Generate Random Question Audio from _List_QuessAudio List
@@ -209,25 +220,31 @@ public class S_Quiz : MonoBehaviour
         v_Index_QuestionAudio = Random.Range(0, _List_QuessAudio.Count); // Generate Random INDEX for Question Picture
         _QuestionAudioSource.clip = _List_QuessAudio[v_Index_QuestionAudio]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
         v_QuestionAudioName = _QuestionAudioSource.clip.name; //GET the NAME of the IMAGE
+
+        _List_QuessAudio.RemoveAt(v_Index_QuestionAudio);
     }
 
     //Generate Question Answers and CHANGE the Buttons Text to them 
     public void Func_GenButtonsAnswers()
     {
         var v_CorrectButtonTextIndex = Random.Range(0, _List_AnsButtonsText.Count); // Generate Random Index of the Correct Buttons Text List which will contains the Correct Answer
-        if(v_QuizIndex == 0)
+
+        if (v_QuizIndex == 0)
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+            v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
+
         }
         else if(v_QuizIndex == 1)
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+            v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
         }
 
         _List_AnsButtonsText.RemoveAt(v_CorrectButtonTextIndex); // REMOVE the INDEX of the CORRECT BUTTON TEXT
-        List_Answers.Remove(v_QuestionImageName); // REMOVE the CORRECT ANSWER (STRING) from Answers List
+        List_Answers.Remove(v_CorrectAnswer); // REMOVE the CORRECT ANSWER (STRING) from Answers List
 
-        foreach(var ButtonsText in _List_AnsButtonsText)
+        foreach (var ButtonsText in _List_AnsButtonsText)
         { 
             var v_WrongButtonsAnswerIndex = Random.Range(0, List_Answers.Count); // Generate Random Wrong Answer from List Answers
             ButtonsText.text = List_Answers[v_WrongButtonsAnswerIndex]; // Display the Wrong Answer to Current Button Text in the List
@@ -268,7 +285,7 @@ public class S_Quiz : MonoBehaviour
     {
         var v_ClickedButtonText = v_ClickedButton.GetComponentInChildren<TextMeshProUGUI>(); // Get the Text of the Marked Button 
 
-        if (v_ClickedButtonText.text == v_QuestionImageName) // Check is the Text of the Marked Button is EQUAL to the NAME of the QUESTION IMAGE
+        if (v_ClickedButtonText.text == v_CorrectAnswer) // Check is the Text of the Marked Button is EQUAL to the Correct Answer of the Question
         {
             v_CorrectScore++; //Increment Score for the Correct Answers
         }
@@ -285,7 +302,6 @@ public class S_Quiz : MonoBehaviour
 
         _List_AnsButtonsText.Clear(); // Clear ALL List Buttons Text
         _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); // Add again the ButtonsText Array to Buttons Text List
-
     }
 
     //Next Question Function
@@ -296,7 +312,6 @@ public class S_Quiz : MonoBehaviour
             v_ClickedButtons_Quantity = 0; // Reset to NONE Clicked Answer Button
             LastClickedButton = null; // Reset to NONE the Last Clicked Button
 
-            //Score Functionality
             Func_CheckAnswer(v_ClickedButton); //Check is the Player Answer Correct
 
             Func_UpdateQuestionNumber(); // Update Questions Quantity and Text
@@ -312,14 +327,19 @@ public class S_Quiz : MonoBehaviour
         v_QuestionNumber = 0;
 
         Func_VisualizeQuizPanel(false); // Hide Quiz Canvas and Objects
-        _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas and Objects
+        _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas
 
-        //Reset the List with GuessGroup Images 
-        _List_QuessImage.Clear();
+        _List_QuessImage.Clear(); //Clear Quess Image List 
+        _List_QuessAudio.Clear(); //Clear Quess Audio List 
 
         List_Answers.Clear(); //Clear Answers List
         _List_AnsButtonsText.Clear(); // Clear Answer Buttons Text List
         _List_AnsButtonsText.AddRange(_Arr_AnsButtonsText); // Fill Again Answer Buttons Text List
+
+        //Reset Score
+        v_CorrectScore = 0;
+        v_WrongScore = 0;
+
     }
 
     public void Func_NextQuiz()
@@ -331,6 +351,7 @@ public class S_Quiz : MonoBehaviour
         //Reset Score
         v_CorrectScore = 0;
         v_WrongScore = 0;
+
     }
 
 }
