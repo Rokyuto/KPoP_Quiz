@@ -156,8 +156,6 @@ public class S_Quiz : MonoBehaviour
             switch (v_QuizIndex)
             {
                 case 0:
-                    _QuestionPicture.enabled = true; //ENABLE Question Picture Object 
-                    _QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
 
                     List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
 
@@ -166,8 +164,7 @@ public class S_Quiz : MonoBehaviour
                     break;
 
                 case 1:
-                    _QuestionPicture.enabled = false; //DISABLE Question Picture Object 
-                    _QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
+                    _QuestionAudioSource.enabled = true; // Enable the Question Audio Source
 
                     List_Answers.AddRange(Arr_SongsNames); // Add again the Groups Array to Answers List
 
@@ -221,7 +218,10 @@ public class S_Quiz : MonoBehaviour
         _QuestionAudioSource.clip = _List_QuessAudio[v_Index_QuestionAudio]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
         v_QuestionAudioName = _QuestionAudioSource.clip.name; //GET the NAME of the IMAGE
 
-        _List_QuessAudio.RemoveAt(v_Index_QuestionAudio);
+        _List_QuessAudio.RemoveAt(v_Index_QuestionAudio); // Remove from GuessAudio List the Choosen Audio / Song
+
+        _QuestionAudioSource.Play(); // Play the Audio Source ( Choosen Audio/Song )
+
     }
 
     //Generate Question Answers and CHANGE the Buttons Text to them 
@@ -330,7 +330,8 @@ public class S_Quiz : MonoBehaviour
         _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas
 
         _List_QuessImage.Clear(); //Clear Quess Image List 
-        _List_QuessAudio.Clear(); //Clear Quess Audio List 
+        _List_QuessAudio.Clear(); //Clear Quess Audio List
+        _QuestionAudioSource.clip = null;
 
         List_Answers.Clear(); //Clear Answers List
         _List_AnsButtonsText.Clear(); // Clear Answer Buttons Text List

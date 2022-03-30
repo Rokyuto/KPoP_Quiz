@@ -26,13 +26,21 @@ public class S_CategoryBtn : MonoBehaviour
                 QuizTask = "Guess the Group";
                 _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_GroupsNames); // Insert in the List Answers Guess Group Array
                 _QuizCanvas._List_QuessImage.AddRange(_QuizCanvas._Arr_GuessGroupsImgs);
+
                 _QuizCanvas.v_QuizIndex = 0;
+
+                _QuizCanvas._QuestionPicture.enabled = true; //ENABLE Question Picture Object 
+                _QuizCanvas._QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
                 break;
             case 1:
                 QuizTask = "Guess the Song";
                 _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_SongsNames); // Insert in the List Answers Guess Group Array
                 _QuizCanvas._List_QuessAudio.AddRange(_QuizCanvas._Arr_GuessSongs);
+
                 _QuizCanvas.v_QuizIndex = 1;
+
+                _QuizCanvas._QuestionPicture.enabled = false; //DISABLE Question Picture Object 
+                _QuizCanvas._QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
                 break;
             case 2:
                 QuizTask = "Guess the Idol";
