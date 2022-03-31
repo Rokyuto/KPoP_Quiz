@@ -10,13 +10,13 @@ public class S_Quiz : MonoBehaviour
 {   
     //Quiz Canvas Objects
     public Canvas _QuizCanvas; // Create Canvas Object to Initialize Quiz Canvas from the Scene
+    public Canvas _QuestionCanvas; // Question Canvas
 
     public TextMeshProUGUI _QuizTaskTextMesh; // Quiz Task Text Mesh
     public TextMeshProUGUI _QuestionNumberTextMesh; // Question Number Text Mesh
 
     public TextMeshProUGUI _CorrectAnswersText; // Correct Answers Text Object
     public TextMeshProUGUI _WrongAnswersText; // Wrong Answers Text Object
-    public TextMeshProUGUI _BestScoreText;
 
     public TextMeshProUGUI[] _Arr_AnsButtonsText; // Array with Answer Buttons Texts
     public List<TextMeshProUGUI> _List_AnsButtonsText; // List with Answer Buttons Texts
@@ -49,7 +49,7 @@ public class S_Quiz : MonoBehaviour
     int v_ClickedButtons_Quantity; // Check Quantity of Clicked Answer Buttons 
 
     int v_QuestionNumber = 0; // Tracker Question Number
-    int v_QuestionsQuantity = 30; // Questions Quantity in the Quiz
+    public int v_QuestionsQuantity; // Questions Quantity in the Quiz
 
     public int v_CorrectScore = 0; //Score for Correct Answers
     public int v_WrongScore = 0; //Score for Wrong Answers
@@ -76,7 +76,7 @@ public class S_Quiz : MonoBehaviour
     void Start()
     {
         _ScoreManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<S_ScoreManager>(); // Initialize the S_ScoreManager Script from the BestScoreText (this Object has "Manager" tag )
-
+        //_ScoreManager = new S_ScoreManager();
         Func_VisualizeQuizPanel(false); //Visualize Quiz Panel
     }
 
@@ -107,9 +107,8 @@ public class S_Quiz : MonoBehaviour
         _QuizTaskTextMesh.gameObject.SetActive(isActive);
 
         // Quiz Question Canvas Elenets
-        _QuestionPicture.gameObject.SetActive(isActive);
-        _QuestionVideoPlayer.gameObject.SetActive(isActive);
-        _QuestionAudioSource.gameObject.SetActive(isActive);
+
+        _QuestionCanvas.gameObject.SetActive(isActive);
 
         // Answer Buttons
         foreach (var Button in AnsButtons)
@@ -120,10 +119,11 @@ public class S_Quiz : MonoBehaviour
         QuitButton.gameObject.SetActive(isActive);
         NextButton.gameObject.SetActive(isActive);
 
-        //Hide Scores Texts
+        //Hide Scores Elements
         _CorrectAnswersText.gameObject.SetActive(false);
         _WrongAnswersText.gameObject.SetActive(false);
-        _BestScoreText.gameObject.SetActive(false);
+        _ScoreManager._PlayerSuccessRateSlider.gameObject.SetActive(false); // Hide Player SuccessRate ProgresBar
+        _ScoreManager._BestSuccessRateSlider.gameObject.SetActive(false); // Hide BestSuccessRate ProgresBar
     }
 
     //Update Question TextMeshPro Content(Text)
@@ -176,7 +176,7 @@ public class S_Quiz : MonoBehaviour
         }
         else // The Quiz Ends (Question Number = 30 (Questions Quantity)
         {
-            _QuestionNumberTextMesh.text = "All Questions are answered";
+            _QuestionNumberTextMesh.text = "All " + v_QuestionsQuantity + " Questions are answered";
 
             Func_VisualizeElements(false); // Hide Quiz Elements
 
@@ -187,16 +187,17 @@ public class S_Quiz : MonoBehaviour
             _WrongAnswersText.gameObject.SetActive(true);
             _WrongAnswersText.text = "Wrong Answers: " + v_WrongScore;
 
-            NextQuizButton.gameObject.SetActive(true); //Show Next Quiz Button
-
             _List_QuessImage.Clear(); // Reset the List with Guess Image
             _List_QuessAudio.Clear(); // Reset the List with Guess Audio
             List_Answers.Clear(); // Reset Answers List
 
-            //Highscore Functionality
-            _BestScoreText.gameObject.SetActive(true); //Show Best Score Text
-            _ScoreManager.Func_UpadePlayerHighScore(v_CorrectScore); // Call Function to Check Player Score and Update the Hidhscore Data if the CURRENT Player Score is BIGGER than the HIGHSCORE
-            _BestScoreText.text = "Best Score: " + _ScoreManager.v_BestScore; // Print the Best Score
+            NextQuizButton.gameObject.SetActive(true);
+
+            //Success Rate Functionality
+            _ScoreManager._PlayerSuccessRateSlider.gameObject.SetActive(true); // Show Player SuccessRate ProgresBar
+            _ScoreManager._BestSuccessRateSlider.gameObject.SetActive(true); // Show Best SuccessRate ProgresBar
+
+            _ScoreManager.Func_CalculateSuccessRate(v_CorrectScore, v_QuestionsQuantity); // Call Function to Check Player Score and Update the Hidhscore Data if the CURRENT Player Score is BIGGER than the HIGHSCORE
 
         }
     }
@@ -352,6 +353,10 @@ public class S_Quiz : MonoBehaviour
         //Reset Score
         v_CorrectScore = 0;
         v_WrongScore = 0;
+
+        //Reset SuccessRate ProgressBar Capacity (value) to 0
+        _ScoreManager.v_InitialProgressBarCapacity = 0;
+        _ScoreManager._PlayerSuccessRateSlider.value = _ScoreManager.v_InitialProgressBarCapacity;
 
     }
 
