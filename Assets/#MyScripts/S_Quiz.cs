@@ -87,11 +87,12 @@ public class S_Quiz : MonoBehaviour
     {
         if (isActive == true)
         {
+            _QuizCanvas.gameObject.SetActive(true); //Show Quiz Canvas and Objects     
+            Func_VisualizeElements(isActive); // Show Quiz Elements
+
             Func_UpdateQuestionNumber(); //Update Question Number
             Func_HideClickMark(); //Hide Click Marks
 
-            _QuizCanvas.gameObject.SetActive(true); //Show Quiz Canvas and Objects     
-            Func_VisualizeElements(isActive); // Show Quiz Elements
             NextQuizButton.gameObject.SetActive(false);
         }
         else
@@ -109,7 +110,6 @@ public class S_Quiz : MonoBehaviour
         _QuizTaskTextMesh.gameObject.SetActive(isActive);
 
         // Quiz Question Canvas Elenets
-
         _QuestionCanvas.gameObject.SetActive(isActive);
 
         // Answer Buttons
@@ -236,7 +236,6 @@ public class S_Quiz : MonoBehaviour
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
-            v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
 
         }
         else if(v_QuizIndex == 1)
@@ -244,6 +243,8 @@ public class S_Quiz : MonoBehaviour
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
         }
+
+        v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
 
         _List_AnsButtonsText.RemoveAt(v_CorrectButtonTextIndex); // REMOVE the INDEX of the CORRECT BUTTON TEXT
         List_Answers.Remove(v_CorrectAnswer); // REMOVE the CORRECT ANSWER (STRING) from Answers List

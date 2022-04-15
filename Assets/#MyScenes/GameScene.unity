@@ -3366,6 +3366,34 @@ MonoBehaviour:
   - Like OOH-AHH
   - BOCA
   - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  - Debug
+  v_GenderBorder: 23
 --- !u!1 &941881168
 GameObject:
   m_ObjectHideFlags: 0
@@ -6141,7 +6169,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1713939593}
   m_HandleRect: {fileID: 0}
@@ -6449,7 +6477,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 2018866896}
   m_HandleRect: {fileID: 0}
