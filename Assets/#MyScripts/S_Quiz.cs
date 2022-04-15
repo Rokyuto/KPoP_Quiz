@@ -71,6 +71,7 @@ public class S_Quiz : MonoBehaviour
     public string[] Arr_GroupsNames; //Array with Groups Names
     public string[] Arr_SongsNames; //Array with Songs Names
 
+    int test;
 
     // Start is called before the first frame update
     void Start()
@@ -234,6 +235,7 @@ public class S_Quiz : MonoBehaviour
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
+            test = List_Answers.IndexOf(v_CorrectAnswer);
 
         }
         else if(v_QuizIndex == 1)
@@ -246,8 +248,17 @@ public class S_Quiz : MonoBehaviour
         List_Answers.Remove(v_CorrectAnswer); // REMOVE the CORRECT ANSWER (STRING) from Answers List
 
         foreach (var ButtonsText in _List_AnsButtonsText)
-        { 
-            var v_WrongButtonsAnswerIndex = Random.Range(0, List_Answers.Count); // Generate Random Wrong Answer from List Answers
+        {
+            var v_WrongButtonsAnswerIndex = 0;
+            if (test <= 23)
+            {
+                v_WrongButtonsAnswerIndex = Random.Range(0, 23); // Generate Random Wrong Answer from List Answers
+            }
+            else if(test > 23 )
+            {
+                v_WrongButtonsAnswerIndex = Random.Range(24, List_Answers.Count);
+            }
+            //var v_WrongButtonsAnswerIndex = Random.Range(0, List_Answers.Count); // Generate Random Wrong Answer from List Answers
             ButtonsText.text = List_Answers[v_WrongButtonsAnswerIndex]; // Display the Wrong Answer to Current Button Text in the List
 
             List_Answers.Remove(List_Answers[v_WrongButtonsAnswerIndex]); // REMOVE the CORRECT ANSWER (STRING) from Answers List
