@@ -71,7 +71,8 @@ public class S_Quiz : MonoBehaviour
     public string[] Arr_GroupsNames; //Array with Groups Names
     public string[] Arr_SongsNames; //Array with Songs Names
 
-    int test;
+    int v_CorrectAnswerIndex; // Correct Answer Index in the Answer List
+    public int v_GenderBorder = 23; // Border between FEMALE and MALE Images
 
     // Start is called before the first frame update
     void Start()
@@ -235,7 +236,7 @@ public class S_Quiz : MonoBehaviour
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
-            test = List_Answers.IndexOf(v_CorrectAnswer);
+            v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
 
         }
         else if(v_QuizIndex == 1)
@@ -250,14 +251,15 @@ public class S_Quiz : MonoBehaviour
         foreach (var ButtonsText in _List_AnsButtonsText)
         {
             var v_WrongButtonsAnswerIndex = 0;
-            if (test <= 23)
+            if (v_CorrectAnswerIndex <= v_GenderBorder) // Guess Image is FEMALE 
             {
-                v_WrongButtonsAnswerIndex = Random.Range(0, 23); // Generate Random Wrong Answer from List Answers
+                v_WrongButtonsAnswerIndex = Random.Range(0, v_GenderBorder); // Generate Random Wrong FEMALE Image Answer from List Answers
             }
-            else if(test > 23 )
+            else if(v_CorrectAnswerIndex > v_GenderBorder) // Guess Image is MALE
             {
-                v_WrongButtonsAnswerIndex = Random.Range(24, List_Answers.Count);
+                v_WrongButtonsAnswerIndex = Random.Range(v_GenderBorder + 1, List_Answers.Count); // Generate Random Wrong MALE Image Answer from List Answers
             }
+
             //var v_WrongButtonsAnswerIndex = Random.Range(0, List_Answers.Count); // Generate Random Wrong Answer from List Answers
             ButtonsText.text = List_Answers[v_WrongButtonsAnswerIndex]; // Display the Wrong Answer to Current Button Text in the List
 
