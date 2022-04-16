@@ -3609,7 +3609,7 @@ MonoBehaviour:
   _List_QuessAudio: []
   _CtryCanvas: {fileID: 879660260}
   v_QuizIndex: 0
-  v_QuestionsQuantity: 5
+  v_QuestionsQuantity: 30
   v_CorrectScore: 0
   v_WrongScore: 0
   List_Answers: []

@@ -225,11 +225,14 @@ public class S_Quiz : MonoBehaviour
         }
     }
 
+    // Enter Question Image Zoom Mode
     void Func_Zoom()
     {
         TransparentBGD.gameObject.SetActive(true);
         ExitZoomModeButton.gameObject.SetActive(true);
         v_isZoom = true;
+        SpecialButton.onClick.RemoveListener(Func_Zoom);
+
     }
 
     //Generate Random Question Image from _List_QuessImage List
