@@ -21,9 +21,12 @@ public class S_Quiz : MonoBehaviour
     public TextMeshProUGUI[] _Arr_AnsButtonsText; // Array with Answer Buttons Texts
     public List<TextMeshProUGUI> _List_AnsButtonsText; // List with Answer Buttons Texts
 
+    // Utility Buttons
     public Button QuitButton; // QuitButton
     public Button NextButton; // NextButton
     public Button NextQuizButton; //Next Quiz Button when the Quiz END
+    public Button SpecialButton; // Special Button about Question Content
+    public Button ExitZoomModeButton; // Button to Exit View Image Mode
 
     public Button[] AnsButtons; // Array with AnsButtons
     public GameObject[] ClickMarks; // Array with ClickMarks
@@ -31,6 +34,8 @@ public class S_Quiz : MonoBehaviour
     public Image _QuestionPicture; // Question Picture Image
     public VideoPlayer _QuestionVideoPlayer; // Question Video Player
     public AudioSource _QuestionAudioSource; // Question Audio Source
+
+    public GameObject TransparentBGD;
 
     public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
     public List<Sprite> _List_QuessImage; // List with Groups Images
@@ -40,7 +45,7 @@ public class S_Quiz : MonoBehaviour
 
     //Other Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
-    S_ScoreManager _ScoreManager; // Screate Score Manager Object
+    S_ScoreManager _ScoreManager; // Create Score Manager Object
 
     //Variables
     public int v_QuizIndex; //Initilize which is the Quiz to Generate Question
@@ -74,9 +79,14 @@ public class S_Quiz : MonoBehaviour
     int v_CorrectAnswerIndex; // Correct Answer Index in the Answer List
     public int v_GenderBorder = 23; // Border between FEMALE and MALE Images
 
+    public bool v_isZoom = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        TransparentBGD.gameObject.SetActive(false);
+        ExitZoomModeButton.gameObject.SetActive(false);
+
         _ScoreManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<S_ScoreManager>(); // Initialize the S_ScoreManager Script from the BestScoreText (this Object has "Manager" tag )
         //_ScoreManager = new S_ScoreManager();
         Func_VisualizeQuizPanel(false); //Visualize Quiz Panel
@@ -163,6 +173,9 @@ public class S_Quiz : MonoBehaviour
 
                     Func_GenQuestionImgContent(); // Generate Question Image
                     Func_GenButtonsAnswers(); // Generate Answers
+
+                    SpecialButton.onClick.AddListener(Func_Zoom);
+
                     break;
 
                 case 1:
@@ -170,8 +183,16 @@ public class S_Quiz : MonoBehaviour
 
                     List_Answers.AddRange(Arr_SongsNames); // Add again the Groups Array to Answers List
 
-                    Func_GenQuestionAudioContent(); // Generate Question Audio
-                    Func_GenButtonsAnswers(); // Generate Answers
+                    // Clear Buttons' Texts
+                    foreach(var AnsButtons in _Arr_AnsButtonsText)
+                    {
+                        AnsButtons.GetComponentInChildren<TextMeshProUGUI>().text = null;
+                    }
+                    _QuestionAudioSource.Stop(); // Stop Playing Question Audio 
+
+                    // Play Question Music On Special Button Click || After that Generate Answers || In the End Remove Listener
+                    SpecialButton.onClick.AddListener(Func_GenQuestionAudioContent);
+
                     break;
             }
 
@@ -204,6 +225,13 @@ public class S_Quiz : MonoBehaviour
         }
     }
 
+    void Func_Zoom()
+    {
+        TransparentBGD.gameObject.SetActive(true);
+        ExitZoomModeButton.gameObject.SetActive(true);
+        v_isZoom = true;
+    }
+
     //Generate Random Question Image from _List_QuessImage List
     public void Func_GenQuestionImgContent()
     {
@@ -224,6 +252,9 @@ public class S_Quiz : MonoBehaviour
         _List_QuessAudio.RemoveAt(v_Index_QuestionAudio); // Remove from GuessAudio List the Choosen Audio / Song
 
         _QuestionAudioSource.Play(); // Play the Audio Source ( Choosen Audio/Song )
+
+        Func_GenButtonsAnswers(); // Generate Answers
+        SpecialButton.onClick.RemoveListener(Func_GenQuestionAudioContent); // Remove All Special Button Listeners
 
     }
 
@@ -355,7 +386,7 @@ public class S_Quiz : MonoBehaviour
         //Reset Score
         v_CorrectScore = 0;
         v_WrongScore = 0;
-
+        _QuestionPicture.sprite = null; // Reset Question Picture Actor Sprite 
     }
 
     public void Func_NextQuiz()

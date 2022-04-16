@@ -48,7 +48,7 @@ public class S_ScoreManager : MonoBehaviour
             PlayerPrefs.Save(); // Save the new Information || Data
         }
 
-        Debug.Log(v_BestSuccessRate);
+        Debug.Log(v_PlayerSuccessRate);
 
         //var BestSuccessProgressBarText = "Best Success Rate: " + (v_BestSuccessRate).ToString("0.00") + " %"; // Update || Setup Best Success Progress Bar Text VARIABLE [0 - 100 ] %
         //_BestSuccessRateText.text = BestSuccessProgressBarText; // Update BestSuccess ProgressBar TEXT

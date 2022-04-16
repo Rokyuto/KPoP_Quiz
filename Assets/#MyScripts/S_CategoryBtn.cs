@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,11 +13,12 @@ public class S_CategoryBtn : MonoBehaviour
     public S_Quiz _QuizCanvas; // Initialize Quiz Canvas from Game Scene and S_Quiz Script
 
     public string QuizTask = ""; //The Name of the Quiz
+    public int _ClickedButtonIndex;
 
     //Load Quiz || Back to Startup
     public void Func_SetupQuiz()
     {
-        int _ClickedButtonIndex = System.Array.IndexOf(_CategoriesMenu._CategoriesButtons, _CurrentButton); //Get Clicked Button Index from the CategoriesButtons Array
+        _ClickedButtonIndex = System.Array.IndexOf(_CategoriesMenu._CategoriesButtons, _CurrentButton); //Get Clicked Button Index from the CategoriesButtons Array
 
         //Track which button is Clicked || Set Question Text
         switch ( _ClickedButtonIndex )
@@ -31,6 +33,7 @@ public class S_CategoryBtn : MonoBehaviour
 
                 _QuizCanvas._QuestionPicture.enabled = true; //ENABLE Question Picture Object 
                 _QuizCanvas._QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
+                _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "View Image";
                 break;
             case 1:
                 QuizTask = "Guess the Song";
@@ -40,7 +43,8 @@ public class S_CategoryBtn : MonoBehaviour
                 _QuizCanvas.v_QuizIndex = 1;
 
                 _QuizCanvas._QuestionPicture.enabled = false; //DISABLE Question Picture Object 
-                _QuizCanvas._QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
+                //_QuizCanvas._QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
+                _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "Play Audio";
                 break;
             case 2:
                 QuizTask = "Guess the Idol";
