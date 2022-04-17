@@ -80,6 +80,7 @@ public class S_Quiz : MonoBehaviour
     public int v_GenderBorder = 23; // Border between FEMALE and MALE Images
 
     public bool v_isZoom = false;
+    [SerializeField] private int v_CategoryIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -130,6 +131,7 @@ public class S_Quiz : MonoBehaviour
         // Utility Buttons
         QuitButton.gameObject.SetActive(isActive);
         NextButton.gameObject.SetActive(isActive);
+        SpecialButton.gameObject.SetActive(isActive);
 
         //Hide Scores Elements
         _CorrectAnswersText.gameObject.SetActive(false);
@@ -168,7 +170,7 @@ public class S_Quiz : MonoBehaviour
             switch (v_QuizIndex)
             {
                 case 0:
-
+                    v_CategoryIndex = 0;
                     List_Answers.AddRange(Arr_GroupsNames); // Add again the Groups Array to Answers List
 
                     Func_GenQuestionImgContent(); // Generate Question Image
@@ -179,6 +181,7 @@ public class S_Quiz : MonoBehaviour
                     break;
 
                 case 1:
+                    v_CategoryIndex = 1;
                     _QuestionAudioSource.enabled = true; // Enable the Question Audio Source
 
                     List_Answers.AddRange(Arr_SongsNames); // Add again the Groups Array to Answers List
@@ -189,6 +192,8 @@ public class S_Quiz : MonoBehaviour
                         AnsButtons.GetComponentInChildren<TextMeshProUGUI>().text = null;
                     }
                     _QuestionAudioSource.Stop(); // Stop Playing Question Audio 
+
+                    SpecialButton.onClick.RemoveAllListeners();
 
                     // Play Question Music On Special Button Click || After that Generate Answers || In the End Remove Listener
                     SpecialButton.onClick.AddListener(Func_GenQuestionAudioContent);
@@ -405,6 +410,8 @@ public class S_Quiz : MonoBehaviour
         //Reset SuccessRate ProgressBar Capacity (value) to 0
         _ScoreManager.v_InitialProgressBarCapacity = 0;
         _ScoreManager._PlayerSuccessRateSlider.value = _ScoreManager.v_InitialProgressBarCapacity;
+
+        Debug.Log(_ScoreManager._PlayerSuccessRateSlider.value);
 
     }
 

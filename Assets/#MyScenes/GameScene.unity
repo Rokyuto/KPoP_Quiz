@@ -592,6 +592,11 @@ MonoBehaviour:
   _PlayerSuccessRateText: {fileID: 783111586}
   _BestSuccessRateSlider: {fileID: 1836036555}
   _BestSuccessRateText: {fileID: 1844642635}
+  v_GG_BestSuccessRate: 0
+  v_GS_BestSuccessRate: 0
+  v_GI_BestSuccessRate: 0
+  v_BestSuccessRateCategory: 
+  _Quiz: {fileID: 895827251}
   v_BestSuccessRate: 0
   v_InitialProgressBarCapacity: 0
 --- !u!114 &122567521
@@ -3679,6 +3684,7 @@ MonoBehaviour:
   - Debug
   v_GenderBorder: 23
   v_isZoom: 0
+  v_CategoryIndex: 0
 --- !u!1 &941881168
 GameObject:
   m_ObjectHideFlags: 0

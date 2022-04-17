@@ -12,15 +12,32 @@ public class S_ScoreManager : MonoBehaviour
     public Slider _BestSuccessRateSlider; // Player SuccessRate ProgressBar
     public Text _BestSuccessRateText; // Player SuccessRate ProgressBar Text
 
+    // Best Success Rates for each Category
+    [SerializeField] private float v_GG_BestSuccessRate; // Guess Group
+    [SerializeField] private float v_GS_BestSuccessRate; // Guess Song
+    [SerializeField] private float v_GI_BestSuccessRate; // Guess Idol
+
+    [SerializeField] private string v_BestSuccessRateCategory;
+
+    [SerializeField] private S_Quiz _Quiz;
+
     public float v_BestSuccessRate; // Player HighScore variable
     float v_SuccessRate;  // Success Rate
     float v_ProgresBar_Step = 0.0043f; // Step for Update ProgressBar
     public float v_InitialProgressBarCapacity = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
-        v_BestSuccessRate = PlayerPrefs.GetFloat("BestSuccessRate", v_BestSuccessRate); // Get Highscore Data from PlayerPrefs and update v_BestSuccessRate
+        //PlayerPrefs.DeleteAll();
+        v_GG_BestSuccessRate = PlayerPrefs.GetFloat("BestGuessGroupSuccessRate", v_GG_BestSuccessRate);
+        v_GS_BestSuccessRate = PlayerPrefs.GetFloat("BestGuessSongSuccessRate", v_GS_BestSuccessRate);
+
+    }
+
+    // Function to Get BestScore and Reset the Score Bars
+    void Func_Startup()
+    {
+        //v_BestSuccessRate = PlayerPrefs.GetFloat("BestSuccessRate", v_BestSuccessRate); // Get Highscore Data from PlayerPrefs and update v_BestSuccessRate
         //PlayerPrefs.DeleteAll();
         _PlayerSuccessRateSlider.value = v_InitialProgressBarCapacity;
         _BestSuccessRateSlider.value = 0;
@@ -29,6 +46,8 @@ public class S_ScoreManager : MonoBehaviour
     //Function to Calculate the Player Success Rate in the Quiz
     public void Func_CalculateSuccessRate(int v_CorrectScore, int v_QuestionsQuantity)
     {
+        Func_Startup(); // Reset PlayerSuccessRateSlider value when the Quiz End
+
         v_SuccessRate = (float)v_CorrectScore / (float)v_QuestionsQuantity; // Calculate Success Rate in float [0.0 - 1.0] -> Correct Answers / Questions Quantity
 
         Update(); // Fill the Progress Bar
@@ -40,11 +59,24 @@ public class S_ScoreManager : MonoBehaviour
     //Function to Update Player BestScore
     public void Func_UpadePlayerHighScore(float v_PlayerSuccessRate)
     {
+        switch(_Quiz.v_QuizIndex)
+        {
+            case 0:
+                v_BestSuccessRate = v_GG_BestSuccessRate;
+                v_BestSuccessRateCategory = "BestGuessGroupSuccessRate";
+                break;
+            case 1:
+                v_BestSuccessRate = v_GS_BestSuccessRate;
+                v_BestSuccessRateCategory = "BestGuessSongSuccessRate";
+                break;
+        }
+
+
         if (v_PlayerSuccessRate > v_BestSuccessRate) // Check if the Player Success Rate > BEST SCORE -> If true
         {
             v_BestSuccessRate = v_PlayerSuccessRate; // Update the Best Score value to the Current Player SuccessRate
 
-            PlayerPrefs.SetFloat("BestSuccessRate", v_BestSuccessRate); // Update the Information || Data
+            PlayerPrefs.SetFloat(v_BestSuccessRateCategory, v_BestSuccessRate); // Update the Information || Data
             PlayerPrefs.Save(); // Save the new Information || Data
         }
 
