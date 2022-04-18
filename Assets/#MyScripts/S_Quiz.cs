@@ -80,7 +80,7 @@ public class S_Quiz : MonoBehaviour
     public int v_GenderBorder = 23; // Border between FEMALE and MALE Images
 
     public bool v_isZoom = false;
-    [SerializeField] private int v_CategoryIndex;
+    public int v_CategoryIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -175,6 +175,8 @@ public class S_Quiz : MonoBehaviour
 
                     Func_GenQuestionImgContent(); // Generate Question Image
                     Func_GenButtonsAnswers(); // Generate Answers
+
+                    SpecialButton.onClick.RemoveAllListeners();
 
                     SpecialButton.onClick.AddListener(Func_Zoom);
 
