@@ -27,7 +27,7 @@ public class S_CategoryBtn : MonoBehaviour
                 // If Quiz Task is "Guess the Group" :
                 QuizTask = "Guess the Group";
                 _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_GroupsNames); // Insert in the List Answers Guess Group Array
-                _QuizCanvas._List_QuessImage.AddRange(_QuizCanvas._Arr_GuessGroupsImgs);
+                _QuizCanvas._List_GuessImage.AddRange(_QuizCanvas._Arr_GuessGroupsImgs);
 
                 _QuizCanvas.v_QuizIndex = 0;
 
@@ -38,7 +38,7 @@ public class S_CategoryBtn : MonoBehaviour
             case 1:
                 QuizTask = "Guess the Song";
                 _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_SongsNames); // Insert in the List Answers Guess Group Array
-                _QuizCanvas._List_QuessAudio.AddRange(_QuizCanvas._Arr_GuessSongs);
+                _QuizCanvas._List_GuessAudio.AddRange(_QuizCanvas._Arr_GuessSongs);
 
                 _QuizCanvas.v_QuizIndex = 1;
 

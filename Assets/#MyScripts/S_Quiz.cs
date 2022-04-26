@@ -38,10 +38,10 @@ public class S_Quiz : MonoBehaviour
     public GameObject TransparentBGD;
 
     public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
-    public List<Sprite> _List_QuessImage; // List with Groups Images
+    public List<Sprite> _List_GuessImage; // List with Groups Images
 
     public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
-    public List<AudioClip> _List_QuessAudio; // List with Songs Audios
+    public List<AudioClip> _List_GuessAudio; // List with Songs Audios
 
     //Other Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
@@ -217,8 +217,8 @@ public class S_Quiz : MonoBehaviour
             _WrongAnswersText.gameObject.SetActive(true);
             _WrongAnswersText.text = "Wrong Answers: " + v_WrongScore;
 
-            _List_QuessImage.Clear(); // Reset the List with Guess Image
-            _List_QuessAudio.Clear(); // Reset the List with Guess Audio
+            _List_GuessImage.Clear(); // Reset the List with Guess Image
+            _List_GuessAudio.Clear(); // Reset the List with Guess Audio
             List_Answers.Clear(); // Reset Answers List
 
             NextQuizButton.gameObject.SetActive(true);
@@ -242,24 +242,24 @@ public class S_Quiz : MonoBehaviour
 
     }
 
-    //Generate Random Question Image from _List_QuessImage List
+    //Generate Random Question Image from _List_GuessImage List
     public void Func_GenQuestionImgContent()
     {
-        v_Index_QuestionImage = Random.Range( 0, _List_QuessImage.Count ); // Generate Random INDEX for Question Picture
-        _QuestionPicture.sprite = _List_QuessImage[v_Index_QuestionImage]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
+        v_Index_QuestionImage = Random.Range( 0, _List_GuessImage.Count ); // Generate Random INDEX for Question Picture
+        _QuestionPicture.sprite = _List_GuessImage[v_Index_QuestionImage]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
         v_QuestionImageName = _QuestionPicture.sprite.name; //GET the NAME of the IMAGE
 
-        _List_QuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
+        _List_GuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
     }
 
-    //Generate Random Question Audio from _List_QuessAudio List
+    //Generate Random Question Audio from _List_GuessAudio List
     public void Func_GenQuestionAudioContent()
     {
-        v_Index_QuestionAudio = Random.Range(0, _List_QuessAudio.Count); // Generate Random INDEX for Question Picture
-        _QuestionAudioSource.clip = _List_QuessAudio[v_Index_QuestionAudio]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
+        v_Index_QuestionAudio = Random.Range(0, _List_GuessAudio.Count); // Generate Random INDEX for Question Picture
+        _QuestionAudioSource.clip = _List_GuessAudio[v_Index_QuestionAudio]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
         v_QuestionAudioName = _QuestionAudioSource.clip.name; //GET the NAME of the IMAGE
 
-        _List_QuessAudio.RemoveAt(v_Index_QuestionAudio); // Remove from GuessAudio List the Choosen Audio / Song
+        _List_GuessAudio.RemoveAt(v_Index_QuestionAudio); // Remove from GuessAudio List the Choosen Audio / Song
 
         _QuestionAudioSource.Play(); // Play the Audio Source ( Choosen Audio/Song )
 
@@ -272,17 +272,21 @@ public class S_Quiz : MonoBehaviour
     public void Func_GenButtonsAnswers()
     {
         var v_CorrectButtonTextIndex = Random.Range(0, _List_AnsButtonsText.Count); // Generate Random Index of the Correct Buttons Text List which will contains the Correct Answer
+        v_GenderBorder = 23;
 
         if (v_QuizIndex == 0)
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
-
         }
         else if(v_QuizIndex == 1)
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
+        }
+        else if(v_QuizIndex == 2)
+        {
+            v_GenderBorder = 13;
         }
 
         v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
@@ -385,8 +389,8 @@ public class S_Quiz : MonoBehaviour
         Func_VisualizeQuizPanel(false); // Hide Quiz Canvas and Objects
         _CtryCanvas.Func_VisualizeCategoriesPanel(true); // Show Category Canvas
 
-        _List_QuessImage.Clear(); //Clear Quess Image List 
-        _List_QuessAudio.Clear(); //Clear Quess Audio List
+        _List_GuessImage.Clear(); //Clear Quess Image List 
+        _List_GuessAudio.Clear(); //Clear Quess Audio List
         _QuestionAudioSource.clip = null;
 
         List_Answers.Clear(); //Clear Answers List

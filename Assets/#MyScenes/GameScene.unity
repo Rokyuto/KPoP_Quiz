@@ -3615,17 +3615,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ae56c4dd547073649ba84cdb4741983f, type: 3}
   - {fileID: 8300000, guid: badd0a86ed9168c47ac1c9d027528a63, type: 3}
   - {fileID: 8300000, guid: 9686c155a2ec74b46b0368726490571b, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 92e469c2d444fc24e84390357a07e816, type: 3}
   - {fileID: 8300000, guid: 6394f75ea9fb88d4e9ab08079052af5a, type: 3}
   - {fileID: 8300000, guid: 2c23f3fa5a1d7be4faf2a6da0bf4c121, type: 3}
   - {fileID: 8300000, guid: b3b7cccd63e762f48a5d3bde43afa09a, type: 3}
   - {fileID: 8300000, guid: 0a49f9e5578240649a92dd0ecacec361, type: 3}
   - {fileID: 8300000, guid: cd6bb6f680992184db868f990a46e0c1, type: 3}
   - {fileID: 8300000, guid: e84ee7047e45d504a8c0a33184beb033, type: 3}
-  - {fileID: 8300000, guid: fd8c6e466877ec24d9b0cddce795022e, type: 3}
+  - {fileID: 8300000, guid: ea4acfc31c74e3946a436293f51055a4, type: 3}
   - {fileID: 8300000, guid: 9726fdbab1d7b724f9ff1e289a29f0c0, type: 3}
   - {fileID: 8300000, guid: 7043eef58df824a41803d0d5ee73c427, type: 3}
-  - {fileID: 8300000, guid: 24297018e6ce7f344b258f3506b056a6, type: 3}
+  - {fileID: 8300000, guid: a97876e7e6174044ebbea4c8b65a68ad, type: 3}
+  - {fileID: 8300000, guid: 079e086925bd8c84990a83167eca4b14, type: 3}
+  - {fileID: 8300000, guid: 456f4fe60d2da7346b703243714028e1, type: 3}
+  - {fileID: 8300000, guid: 8d82a503f8dccfd46a0d75ef5c2b7c2a, type: 3}
+  - {fileID: 8300000, guid: fca13096ae4b0bd4483e1f6e5fbf1018, type: 3}
+  - {fileID: 8300000, guid: bf866fcb9a847a44497fb00647714f51, type: 3}
+  - {fileID: 8300000, guid: 267f4422ede55794280d348215698a24, type: 3}
+  - {fileID: 8300000, guid: bb41c7620a3085a498d61fb6c667be3c, type: 3}
+  - {fileID: 8300000, guid: 017b784e78a3f254393c377ebe154e1b, type: 3}
   _List_QuessAudio: []
   _CtryCanvas: {fileID: 879660260}
   v_QuizIndex: 0
@@ -3678,25 +3686,25 @@ MonoBehaviour:
   - Gleam
   - ME
   - Hobgoblin
-  - Senorita
+  - ONE SHOT, TWO SHOT
   - DUMDi DUMDi
   - Go or Stop
   - Heroine
   - Love U
   - Dream of You
   - PTT (Paint The Town)
-  - So What
+  - MAGO
   - Cause I'm God Girl
   - BIRTHDAY
-  - Eung Eung
-  - Debug
-  - Debug
-  - Debug
-  - Debug
-  - Debug
-  - Debug
-  - Debug
-  - Debug
+  - Come See Me
+  - DUN DUN
+  - FANTASTIC BABY
+  - Regular
+  - NOT BY THE MOON
+  - MIC Drop
+  - LOVE SCENARIO
+  - Ko Ko Bop
+  - Black Suit
   v_GenderBorder: 23
   v_isZoom: 0
   v_CategoryIndex: 0
