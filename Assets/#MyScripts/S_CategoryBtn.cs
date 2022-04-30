@@ -26,6 +26,7 @@ public class S_CategoryBtn : MonoBehaviour
             case 0:
                 // If Quiz Task is "Guess the Group" :
                 QuizTask = "Guess the Group";
+                // Insert in the Lists Groups' Images and Names
                 _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_GroupsNames); // Insert in the List Answers Guess Group Array
                 _QuizCanvas._List_GuessImage.AddRange(_QuizCanvas._Arr_GuessGroupsImgs);
 
@@ -35,9 +36,11 @@ public class S_CategoryBtn : MonoBehaviour
                 _QuizCanvas._QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
                 _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "View Image";
                 break;
+
             case 1:
                 QuizTask = "Guess the Song";
-                _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_SongsNames); // Insert in the List Answers Guess Group Array
+                // Insert in the Lists Songs' Audio and Names
+                _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_SongsNames);
                 _QuizCanvas._List_GuessAudio.AddRange(_QuizCanvas._Arr_GuessSongs);
 
                 _QuizCanvas.v_QuizIndex = 1;
@@ -46,18 +49,32 @@ public class S_CategoryBtn : MonoBehaviour
                 //_QuizCanvas._QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
                 _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "Play Audio";
                 break;
+
             case 2:
                 QuizTask = "Guess the Idol";
+                // Insert in the Lists Idols' Images and Names
+                _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_IdolsNames);
+                _QuizCanvas._List_GuessImage.AddRange(_QuizCanvas._Arr_GuessIdolsImgs);
+
+                _QuizCanvas.v_QuizIndex = 2;
+
+                _QuizCanvas._QuestionPicture.enabled = true; //ENABLE Question Picture Object 
+                _QuizCanvas._QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
+                _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "View Image";
                 break;
+
             case 3:
                 QuizTask = "Guess the Idol who Sing";
                 break;
+
             case 4:
                 QuizTask = "Guess song part performer";
                 break;
+
             case 5:
                 QuizTask = "Guess which song the dance is from";
                 break;
+
             case 6:
                 QuizTask = "Guess Idol Nationality";
                 break;

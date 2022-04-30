@@ -37,11 +37,14 @@ public class S_Quiz : MonoBehaviour
 
     public GameObject TransparentBGD;
 
-    public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
-    public List<Sprite> _List_GuessImage; // List with Groups Images
+    // Question Lists and Arrays
 
-    public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
+    public List<Sprite> _List_GuessImage; // List with Groups Images
+    public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
+    public Sprite[] _Arr_GuessIdolsImgs; // Array with Idols Images
+
     public List<AudioClip> _List_GuessAudio; // List with Songs Audios
+    public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
 
     //Other Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
@@ -75,6 +78,7 @@ public class S_Quiz : MonoBehaviour
     //Quiz Answers Arrays
     public string[] Arr_GroupsNames; //Array with Groups Names
     public string[] Arr_SongsNames; //Array with Songs Names
+    public string[] Arr_IdolsNames; // Array with Idols Names
 
     int v_CorrectAnswerIndex; // Correct Answer Index in the Answer List
     public int v_GenderBorder = 23; // Border between FEMALE and MALE Images
@@ -199,6 +203,19 @@ public class S_Quiz : MonoBehaviour
 
                     // Play Question Music On Special Button Click || After that Generate Answers || In the End Remove Listener
                     SpecialButton.onClick.AddListener(Func_GenQuestionAudioContent);
+
+                    break;
+
+                case 2:
+                    v_CategoryIndex = 2;
+                    List_Answers.AddRange(Arr_IdolsNames); // Add again the Idols Array to Answers List
+
+                    Func_GenQuestionImgContent(); // Generate Question Image
+                    Func_GenButtonsAnswers(); // Generate Answers
+
+                    SpecialButton.onClick.RemoveAllListeners();
+
+                    SpecialButton.onClick.AddListener(Func_Zoom);
 
                     break;
             }

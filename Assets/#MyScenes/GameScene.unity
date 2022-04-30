@@ -3569,6 +3569,7 @@ MonoBehaviour:
   _QuestionVideoPlayer: {fileID: 1649139281}
   _QuestionAudioSource: {fileID: 449909892}
   TransparentBGD: {fileID: 1217234953}
+  _List_GuessImage: []
   _Arr_GuessGroupsImgs:
   - {fileID: 21300000, guid: 1f7a86a19606ec149872155aea46ecc3, type: 3}
   - {fileID: 21300000, guid: 88d40f397c285cd429dfaa5f017b09e8, type: 3}
@@ -3601,7 +3602,27 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eeab4521bc4a3cd4ab7c2db02b65edf5, type: 3}
   - {fileID: 21300000, guid: 55b6cc71b4511de4e996a952342d8d6d, type: 3}
   - {fileID: 21300000, guid: c093927c67dff3643b88c69fa7a5729f, type: 3}
-  _List_QuessImage: []
+  _Arr_GuessIdolsImgs:
+  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
+  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
+  - {fileID: 21300000, guid: 4a600a59bb7a4f74bab502e9189d94d4, type: 3}
+  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
+  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
+  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
+  - {fileID: 21300000, guid: 4a600a59bb7a4f74bab502e9189d94d4, type: 3}
+  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
+  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
+  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
+  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
+  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
+  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
+  - {fileID: 21300000, guid: 4a600a59bb7a4f74bab502e9189d94d4, type: 3}
+  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
+  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
+  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
+  - {fileID: 21300000, guid: 4a600a59bb7a4f74bab502e9189d94d4, type: 3}
+  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
+  _List_GuessAudio: []
   _Arr_GuessSongs:
   - {fileID: 8300000, guid: f5fb0c8d68239c74d9290f998a1f6596, type: 3}
   - {fileID: 8300000, guid: d8b85e2c9031bab46be4453608a6e84f, type: 3}
@@ -3634,7 +3655,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 267f4422ede55794280d348215698a24, type: 3}
   - {fileID: 8300000, guid: bb41c7620a3085a498d61fb6c667be3c, type: 3}
   - {fileID: 8300000, guid: 017b784e78a3f254393c377ebe154e1b, type: 3}
-  _List_QuessAudio: []
   _CtryCanvas: {fileID: 879660260}
   v_QuizIndex: 0
   v_QuestionsQuantity: 30
@@ -3705,6 +3725,26 @@ MonoBehaviour:
   - LOVE SCENARIO
   - Ko Ko Bop
   - Black Suit
+  Arr_IdolsNames:
+  - ChungHa
+  - SUNMI
+  - SOMI
+  - IU
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
   v_GenderBorder: 23
   v_isZoom: 0
   v_CategoryIndex: 0
