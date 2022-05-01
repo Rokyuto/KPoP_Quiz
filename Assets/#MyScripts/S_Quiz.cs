@@ -304,6 +304,8 @@ public class S_Quiz : MonoBehaviour
         else if(v_QuizIndex == 2)
         {
             v_GenderBorder = 13;
+            _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+            v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
         }
 
         v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List

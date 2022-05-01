@@ -3607,21 +3607,33 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
   - {fileID: 21300000, guid: 4a600a59bb7a4f74bab502e9189d94d4, type: 3}
   - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
-  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
-  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
-  - {fileID: 21300000, guid: 4a600a59bb7a4f74bab502e9189d94d4, type: 3}
-  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
-  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
-  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
-  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
-  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
-  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
-  - {fileID: 21300000, guid: 4a600a59bb7a4f74bab502e9189d94d4, type: 3}
-  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
-  - {fileID: 21300000, guid: 400200fc7a2d15d40b80b15df5be97c0, type: 3}
-  - {fileID: 21300000, guid: 1bb40e0f14636104ca0beb7990f8bb2a, type: 3}
-  - {fileID: 21300000, guid: 4a600a59bb7a4f74bab502e9189d94d4, type: 3}
-  - {fileID: 21300000, guid: 42a305afd2513d649bdf24d5d4924e2f, type: 3}
+  - {fileID: 21300000, guid: f9dddc4b4c8af7a49a967d0544247d31, type: 3}
+  - {fileID: 21300000, guid: 4fed40c9242d3564b997a2953bf060e4, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
   _List_GuessAudio: []
   _Arr_GuessSongs:
   - {fileID: 8300000, guid: f5fb0c8d68239c74d9290f998a1f6596, type: 3}
@@ -3730,6 +3742,18 @@ MonoBehaviour:
   - SUNMI
   - SOMI
   - IU
+  - TAEYEON
+  - Hyo
+  - BoA
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
+  - DEBUG
   - DEBUG
   - DEBUG
   - DEBUG
