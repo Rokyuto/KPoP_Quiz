@@ -180,9 +180,9 @@ public class S_Quiz : MonoBehaviour
                     Func_GenQuestionImgContent(); // Generate Question Image
                     Func_GenButtonsAnswers(); // Generate Answers
 
-                    SpecialButton.onClick.RemoveAllListeners();
+                    SpecialButton.onClick.RemoveAllListeners(); // Remove All Listeners and Events untill now for the Button
 
-                    SpecialButton.onClick.AddListener(Func_Zoom);
+                    SpecialButton.onClick.AddListener(Func_Zoom); // Add new Listener
 
                     break;
 
@@ -213,9 +213,8 @@ public class S_Quiz : MonoBehaviour
                     Func_GenQuestionImgContent(); // Generate Question Image
                     Func_GenButtonsAnswers(); // Generate Answers
 
-                    SpecialButton.onClick.RemoveAllListeners();
-
-                    SpecialButton.onClick.AddListener(Func_Zoom);
+                    SpecialButton.onClick.RemoveAllListeners(); // Remove All Listeners and Events untill now for the Button
+                    SpecialButton.onClick.AddListener(Func_Zoom); // Add new Listener
 
                     break;
             }
@@ -255,7 +254,7 @@ public class S_Quiz : MonoBehaviour
         TransparentBGD.gameObject.SetActive(true);
         ExitZoomModeButton.gameObject.SetActive(true);
         v_isZoom = true;
-        SpecialButton.onClick.RemoveListener(Func_Zoom);
+        //SpecialButton.onClick.RemoveListener(Func_Zoom);
 
     }
 
