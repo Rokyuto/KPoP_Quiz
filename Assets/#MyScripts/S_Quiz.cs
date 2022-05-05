@@ -289,7 +289,6 @@ public class S_Quiz : MonoBehaviour
     public void Func_GenButtonsAnswers()
     {
         var v_CorrectButtonTextIndex = Random.Range(0, _List_AnsButtonsText.Count); // Generate Random Index of the Correct Buttons Text List which will contains the Correct Answer
-        v_GenderBorder = 23;
 
         if (v_QuizIndex == 0)
         {
@@ -303,7 +302,6 @@ public class S_Quiz : MonoBehaviour
         }
         else if(v_QuizIndex == 2)
         {
-            v_GenderBorder = 13;
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
         }
