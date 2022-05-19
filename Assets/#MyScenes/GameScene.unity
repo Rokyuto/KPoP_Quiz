@@ -3616,10 +3616,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d09f061ea0e788643967c13286b16ad3, type: 3}
   - {fileID: 21300000, guid: ae09e9ef73779c649bef6ed428a32ef8, type: 3}
   - {fileID: 21300000, guid: 10c2009ac03f7104a8a33f512bccf06e, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: b2ee54bead7404d438016a03a3193d75, type: 3}
+  - {fileID: 21300000, guid: 48c86f00246f67141b5cf1b03f4048af, type: 3}
+  - {fileID: 21300000, guid: 9f9f89005c8013942bddbc744e24bd61, type: 3}
+  - {fileID: 21300000, guid: 4d06dc5cb8a8f5b4ea85d48cb24b63fc, type: 3}
   - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
   - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
   - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
@@ -3630,8 +3630,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 86de7fea3ba012c458c6d57c575d6f44, type: 3}
   - {fileID: 21300000, guid: 60e86e48a30c0ae4782fe15e00ed564a, type: 3}
   - {fileID: 21300000, guid: a271d838a08386c4a8554fcc247dfe8d, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: b34cd28dfce2dd1438b6cafa3b189f4e, type: 3}
+  - {fileID: 21300000, guid: 2d4f04da8c1319d42af249801262e493, type: 3}
   - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
   - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
   _List_GuessAudio: []
@@ -3751,10 +3751,10 @@ MonoBehaviour:
   - ALEXA
   - HYOLYN
   - JESSI
-  - DEBUG
-  - DEBUG
-  - DEBUG
-  - DEBUG
+  - "Ros\xE9"
+  - YUNA
+  - IRENE
+  - GAYEON
   - DEBUG
   - DEBUG
   - DEBUG
@@ -3765,8 +3765,8 @@ MonoBehaviour:
   - PSY
   - HEECHUL
   - DAWN
-  - DEBUG
-  - DEBUG
+  - SUGA
+  - WONHO
   - DEBUG
   - DEBUG
   v_GenderBorder: 23
