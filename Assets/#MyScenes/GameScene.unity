@@ -3620,9 +3620,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 48c86f00246f67141b5cf1b03f4048af, type: 3}
   - {fileID: 21300000, guid: 9f9f89005c8013942bddbc744e24bd61, type: 3}
   - {fileID: 21300000, guid: 4d06dc5cb8a8f5b4ea85d48cb24b63fc, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: b035f98ef5446ef479b305b67b521fc3, type: 3}
+  - {fileID: 21300000, guid: b060912c746487848b2e62b34cec2cf3, type: 3}
+  - {fileID: 21300000, guid: ac6e1e026e0e6b34494274243f7f24c2, type: 3}
   - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
   - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
   - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
@@ -3632,8 +3632,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a271d838a08386c4a8554fcc247dfe8d, type: 3}
   - {fileID: 21300000, guid: b34cd28dfce2dd1438b6cafa3b189f4e, type: 3}
   - {fileID: 21300000, guid: 2d4f04da8c1319d42af249801262e493, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
-  - {fileID: 21300000, guid: fbb2610891507ad4f8e243662b9d5f83, type: 3}
+  - {fileID: 21300000, guid: a86e2b075f07172438839f6410667e38, type: 3}
+  - {fileID: 21300000, guid: 175dba41f780718409318c061455f6e0, type: 3}
   _List_GuessAudio: []
   _Arr_GuessSongs:
   - {fileID: 8300000, guid: f5fb0c8d68239c74d9290f998a1f6596, type: 3}
@@ -3755,9 +3755,9 @@ MonoBehaviour:
   - YUNA
   - IRENE
   - GAYEON
-  - DEBUG
-  - DEBUG
-  - DEBUG
+  - HEEJIN
+  - SOLAR
+  - SOYEON
   - DEBUG
   - DEBUG
   - DEBUG
@@ -3767,8 +3767,8 @@ MonoBehaviour:
   - DAWN
   - SUGA
   - WONHO
-  - DEBUG
-  - DEBUG
+  - SEHUN
+  - JAY
   v_GenderBorder: 23
   v_isZoom: 0
   v_CategoryIndex: 0
