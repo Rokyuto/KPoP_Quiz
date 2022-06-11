@@ -39,12 +39,15 @@ public class S_Quiz : MonoBehaviour
 
     // Question Lists and Arrays
 
+    // Lists
     public List<Sprite> _List_GuessImage; // List with Groups Images
+    public List<AudioClip> _List_GuessAudio; // List with Songs Audios
+
+    // Arrays
     public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
     public Sprite[] _Arr_GuessIdolsImgs; // Array with Idols Images
-
-    public List<AudioClip> _List_GuessAudio; // List with Songs Audios
     public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
+    public AudioClip[] _Arr_GuessPerformer; // Array with Song Performer for "Guess the idol who sing" Quiz
 
     //Other Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
