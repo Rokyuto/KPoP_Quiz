@@ -53,8 +53,8 @@ public class S_Quiz : MonoBehaviour
     public List<string> List_Answers = new List<string>(); //List Quiz Answers
 
     //Quiz Answers Arrays
-    public string[] Arr_GroupsNames; //Array with Groups Names
-    public string[] Arr_SongsNames; //Array with Songs Names
+    public string[] Arr_GroupsNames; // Array with Groups Names
+    public string[] Arr_SongsNames; // Array with Songs Names
     public string[] Arr_IdolsNames; // Array with Idols Names
     public string[] Arr_PerformersNames; // Array with Song Performers
 
