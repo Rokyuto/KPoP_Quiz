@@ -49,6 +49,15 @@ public class S_Quiz : MonoBehaviour
     public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
     public AudioClip[] _Arr_GuessPerformer; // Array with Song Performer for "Guess the idol who sing" Quiz
 
+    //Answers List
+    public List<string> List_Answers = new List<string>(); //List Quiz Answers
+
+    //Quiz Answers Arrays
+    public string[] Arr_GroupsNames; //Array with Groups Names
+    public string[] Arr_SongsNames; //Array with Songs Names
+    public string[] Arr_IdolsNames; // Array with Idols Names
+    public string[] Arr_PerformersNames; // Array with Song Performers
+
     //Other Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
     S_ScoreManager _ScoreManager; // Create Score Manager Object
@@ -74,14 +83,6 @@ public class S_Quiz : MonoBehaviour
 
     Button LastClickedButton = null; // Tracker Last Clicked Button
     Button v_ClickedButton = null; //Tracker for Clicked Button when Next Button is Pressed to Check is the Answer Correct
-
-    //Answers objects
-    public List<string> List_Answers = new List<string>(); //List Quiz Answers
-
-    //Quiz Answers Arrays
-    public string[] Arr_GroupsNames; //Array with Groups Names
-    public string[] Arr_SongsNames; //Array with Songs Names
-    public string[] Arr_IdolsNames; // Array with Idols Names
 
     int v_CorrectAnswerIndex; // Correct Answer Index in the Answer List
     public int v_GenderBorder = 23; // Border between FEMALE and MALE Images
