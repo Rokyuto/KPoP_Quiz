@@ -47,7 +47,7 @@ public class S_Quiz : MonoBehaviour
     public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
     public Sprite[] _Arr_GuessIdolsImgs; // Array with Idols Images
     public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
-    public AudioClip[] _Arr_GuessPerformer; // Array with Song Performer for "Guess the idol who sing" Quiz
+    public AudioClip[] _Arr_GuessPerformer; // Array with Song Performer for "Guess the Idol who Sing" Quiz
 
     //Answers List
     public List<string> List_Answers = new List<string>(); //List Quiz Answers
