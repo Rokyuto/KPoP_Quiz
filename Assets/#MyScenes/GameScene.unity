@@ -3645,6 +3645,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1ba44be70fb57f14b86bdea730912931, type: 3}
   - {fileID: 8300000, guid: f949d5d430d78ad46869ee8e49e8c410, type: 3}
   - {fileID: 8300000, guid: 46325df310eebe9489b68bf985e3b643, type: 3}
+  - {fileID: 8300000, guid: 3c3b5ccd868338b43b22c1268b10b830, type: 3}
   - {fileID: 8300000, guid: ae56c4dd547073649ba84cdb4741983f, type: 3}
   - {fileID: 8300000, guid: badd0a86ed9168c47ac1c9d027528a63, type: 3}
   - {fileID: 8300000, guid: 9686c155a2ec74b46b0368726490571b, type: 3}
@@ -3653,7 +3654,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2c23f3fa5a1d7be4faf2a6da0bf4c121, type: 3}
   - {fileID: 8300000, guid: b3b7cccd63e762f48a5d3bde43afa09a, type: 3}
   - {fileID: 8300000, guid: 0a49f9e5578240649a92dd0ecacec361, type: 3}
-  - {fileID: 8300000, guid: 3c3b5ccd868338b43b22c1268b10b830, type: 3}
   - {fileID: 8300000, guid: e84ee7047e45d504a8c0a33184beb033, type: 3}
   - {fileID: 8300000, guid: ea4acfc31c74e3946a436293f51055a4, type: 3}
   - {fileID: 8300000, guid: 9726fdbab1d7b724f9ff1e289a29f0c0, type: 3}
@@ -3673,12 +3673,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3d8f7b8e11f3c08448b53b7c1b2e46f2, type: 3}
   - {fileID: 8300000, guid: 11bc180044bc7284f96fad1befe1a0bc, type: 3}
   - {fileID: 8300000, guid: cc362100c0da0b34c9781af9892e6b5b, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 602f3764b9eb53b4cafb51bc53597f19, type: 3}
+  - {fileID: 8300000, guid: ac5e925af76154d488f86ebafed57dc2, type: 3}
+  - {fileID: 8300000, guid: 3405826c39fc0ab4c8fbbb34fb8748d1, type: 3}
+  - {fileID: 8300000, guid: 43cb61581fa8fa643914851c2013ba65, type: 3}
+  - {fileID: 8300000, guid: 909f45a007d97304aa29b6d782c8093d, type: 3}
+  - {fileID: 8300000, guid: 6b7bd616a35eaf64b8d307bdf58722a6, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3742,6 +3742,7 @@ MonoBehaviour:
   - BOCA
   - Odd Eye
   - HIP
+  - BAD BOY
   - Gleam
   - ME
   - Hobgoblin
@@ -3750,7 +3751,6 @@ MonoBehaviour:
   - Go or Stop
   - Heroine
   - Love U
-  - BAD BOY
   - PTT (Paint The Town)
   - MAGO
   - Cause I'm God Girl
@@ -3802,12 +3802,12 @@ MonoBehaviour:
   - TZUYU
   - SANA
   - LISA
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Chaeryeong
+  - SIYEON
+  - WHEEIN
+  - ELKIE
+  - Soyeon
+  - HYENJEONG
   - 
   - 
   - 
