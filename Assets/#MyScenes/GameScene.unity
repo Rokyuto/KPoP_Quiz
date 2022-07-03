@@ -3679,26 +3679,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 43cb61581fa8fa643914851c2013ba65, type: 3}
   - {fileID: 8300000, guid: 909f45a007d97304aa29b6d782c8093d, type: 3}
   - {fileID: 8300000, guid: 6b7bd616a35eaf64b8d307bdf58722a6, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
   - {fileID: 8300000, guid: b40146a3ba9b04543803091c56ceb387, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
   List_Answers: []
   Arr_GroupsNames:
   - BLACKPINK
@@ -3778,7 +3778,7 @@ MonoBehaviour:
   - ALEXA
   - HYOLYN
   - JESSI
-  - "Ros\xE9"
+  - Rose
   - YUNA
   - IRENE
   - GAYEON
@@ -3808,26 +3808,26 @@ MonoBehaviour:
   - ELKIE
   - Soyeon
   - HYENJEONG
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
   - PSY
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
+  - debug
   _CtryCanvas: {fileID: 879660260}
   v_QuizIndex: 0
   v_QuestionsQuantity: 30

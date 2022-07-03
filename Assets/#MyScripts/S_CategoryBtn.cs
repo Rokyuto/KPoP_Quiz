@@ -65,6 +65,15 @@ public class S_CategoryBtn : MonoBehaviour
 
             case 3:
                 QuizTask = "Guess the Idol who Sing";
+                // Fill Lists with Idols who Sing Answers and Questions
+                _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_PerformersNames);
+                _QuizCanvas._List_GuessAudio.AddRange(_QuizCanvas._Arr_GuessPerformer);
+
+                _QuizCanvas.v_QuizIndex = 3;
+
+                _QuizCanvas._QuestionPicture.enabled = false; //DISABLE Question Picture Object 
+                //_QuizCanvas._QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
+                _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "Play Audio";
                 break;
 
             case 4:

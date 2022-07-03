@@ -221,6 +221,26 @@ public class S_Quiz : MonoBehaviour
                     SpecialButton.onClick.AddListener(Func_Zoom); // Add new Listener
 
                     break;
+
+                case 3:
+                    v_CategoryIndex = 3;
+                    _QuestionAudioSource.enabled = true; // Enable the Question Audio Source
+
+                    List_Answers.AddRange(Arr_PerformersNames); // Add again the Idol who Sing Array to Answers List
+
+                    // Clear Buttons' Texts
+                    foreach (var AnsButtons in _Arr_AnsButtonsText)
+                    {
+                        AnsButtons.GetComponentInChildren<TextMeshProUGUI>().text = null;
+                    }
+                    _QuestionAudioSource.Stop(); // Stop Playing Question Audio 
+
+                    SpecialButton.onClick.RemoveAllListeners();
+
+                    // Play Question Music On Special Button Click || After that Generate Answers || In the End Remove Listener
+                    SpecialButton.onClick.AddListener(Func_GenQuestionAudioContent);
+
+                    break;
             }
 
         }
@@ -293,7 +313,7 @@ public class S_Quiz : MonoBehaviour
     {
         var v_CorrectButtonTextIndex = Random.Range(0, _List_AnsButtonsText.Count); // Generate Random Index of the Correct Buttons Text List which will contains the Correct Answer
 
-        if (v_QuizIndex == 0)
+        /*if (v_QuizIndex == 0)
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
@@ -307,6 +327,27 @@ public class S_Quiz : MonoBehaviour
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
+        }*/
+
+        switch (v_QuizIndex)
+        {
+            case 0:
+                _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+                v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
+                break;
+            case 1:
+                _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION AUDIO NAME - the CORRECT ANSWER
+                v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
+                break;
+            case 2:
+                _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
+                v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
+
+                break;
+            case 3:
+                _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION AUDIO NAME - the CORRECT ANSWER
+                v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
+                break;
         }
 
         v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
