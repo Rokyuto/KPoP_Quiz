@@ -3668,37 +3668,37 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bb41c7620a3085a498d61fb6c667be3c, type: 3}
   - {fileID: 8300000, guid: 017b784e78a3f254393c377ebe154e1b, type: 3}
   _Arr_GuessPerformer:
-  - {fileID: 8300000, guid: cd6bb6f680992184db868f990a46e0c1, type: 3}
-  - {fileID: 8300000, guid: 9565d0d514b908848847bb80b5f17a33, type: 3}
-  - {fileID: 8300000, guid: 3d8f7b8e11f3c08448b53b7c1b2e46f2, type: 3}
-  - {fileID: 8300000, guid: 11bc180044bc7284f96fad1befe1a0bc, type: 3}
-  - {fileID: 8300000, guid: cc362100c0da0b34c9781af9892e6b5b, type: 3}
-  - {fileID: 8300000, guid: 602f3764b9eb53b4cafb51bc53597f19, type: 3}
-  - {fileID: 8300000, guid: ac5e925af76154d488f86ebafed57dc2, type: 3}
-  - {fileID: 8300000, guid: 3405826c39fc0ab4c8fbbb34fb8748d1, type: 3}
-  - {fileID: 8300000, guid: 43cb61581fa8fa643914851c2013ba65, type: 3}
-  - {fileID: 8300000, guid: 909f45a007d97304aa29b6d782c8093d, type: 3}
-  - {fileID: 8300000, guid: 6b7bd616a35eaf64b8d307bdf58722a6, type: 3}
-  - {fileID: 8300000, guid: bf07d9302c7e31b42a930900e6d7ba0d, type: 3}
-  - {fileID: 8300000, guid: ef95e9d124fd24d418e12d98046311e2, type: 3}
-  - {fileID: 8300000, guid: e2924f1f697026945848021d2bebd32d, type: 3}
-  - {fileID: 8300000, guid: 724c892fe2748c743b7ef3cd474bcb27, type: 3}
-  - {fileID: 8300000, guid: 9a41fadc7c670c54181da5dac2a565d7, type: 3}
-  - {fileID: 8300000, guid: f341a55e4b1f84a41b1a507ba133dccf, type: 3}
-  - {fileID: 8300000, guid: 1e285f679323c7a48bfb7f6a6f10ccbc, type: 3}
-  - {fileID: 8300000, guid: c4601bd0208fd5044aa4d86250228c46, type: 3}
-  - {fileID: 8300000, guid: 2f6e26d98ee775b4087161957c810f38, type: 3}
-  - {fileID: 8300000, guid: 7b6ab09d2775d5a4f957a57a49b9c664, type: 3}
-  - {fileID: 8300000, guid: 6b618b695eaf9434ebd31e22716a8d99, type: 3}
-  - {fileID: 8300000, guid: 5363e5c276fc7a744b59c718483cb84c, type: 3}
-  - {fileID: 8300000, guid: 99888d7bb26ce2b4c8db0bb98c281050, type: 3}
-  - {fileID: 8300000, guid: b40146a3ba9b04543803091c56ceb387, type: 3}
-  - {fileID: 8300000, guid: 49a30962f72547d43899ec72f4a2a268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: b5603dc873f1e4745bad5bac01f6fa56, type: 3}
+  - {fileID: 8300000, guid: 8ece42aaac2d7f64aa0b1b360e5fd74d, type: 3}
+  - {fileID: 8300000, guid: 9b665cb636c34404f9c06af27556957e, type: 3}
+  - {fileID: 8300000, guid: ce503f266d3b4864185b2de180d76209, type: 3}
+  - {fileID: 8300000, guid: ad92d64807f113f43b31fa1646a0508e, type: 3}
+  - {fileID: 8300000, guid: ae6c9c042ff53744daf3f397d47f4b88, type: 3}
+  - {fileID: 8300000, guid: 734563670f535cc49907e3cab3622bcf, type: 3}
+  - {fileID: 8300000, guid: 46d35dccca952394a91bdf406f616e9e, type: 3}
+  - {fileID: 8300000, guid: afa74bc79e6d4234490e1814993f0c86, type: 3}
+  - {fileID: 8300000, guid: 70d934dd5cce15a4684f55fb7bc4c609, type: 3}
+  - {fileID: 8300000, guid: 2917b7face838b74e9fa17820086cec6, type: 3}
+  - {fileID: 8300000, guid: 57bdef854d917e7498e9c73edd922988, type: 3}
+  - {fileID: 8300000, guid: 7e3ac1b9e9af3fc4490de5564b09cdb1, type: 3}
+  - {fileID: 8300000, guid: 7191bc3a5c1733b44af61db431504c1c, type: 3}
+  - {fileID: 8300000, guid: 3acab744f77bff045ab2f9dc738dd4e8, type: 3}
+  - {fileID: 8300000, guid: b356342e239d39f43a24054bf2738879, type: 3}
+  - {fileID: 8300000, guid: 6925ddbe052bee54e860c47cbbfe5464, type: 3}
+  - {fileID: 8300000, guid: f99e788a622f7bf43a6ceab376899d60, type: 3}
+  - {fileID: 8300000, guid: 13891f9891cb48749bf366d8e19ca6f4, type: 3}
+  - {fileID: 8300000, guid: 40cb613e481f1294d84493403a3b1d0d, type: 3}
+  - {fileID: 8300000, guid: 6216be5109f28584d900999ac5418af8, type: 3}
+  - {fileID: 8300000, guid: cfdbfc6815607e345b2d24f8ff311774, type: 3}
+  - {fileID: 8300000, guid: a621cb3f119909a41b6ee5851558aac1, type: 3}
+  - {fileID: 8300000, guid: 39e761a80e6aa554eb4d14bd74b18fc9, type: 3}
+  - {fileID: 8300000, guid: 7d59d2e17b56eef4e9d692970121eaad, type: 3}
+  - {fileID: 8300000, guid: 84f7968bacf746b48b4495b254b5a6af, type: 3}
+  - {fileID: 8300000, guid: b9eeee6dfb03fcd4e8e1cffaabe69485, type: 3}
+  - {fileID: 8300000, guid: edff4f0e83be2f24f871dc78d211c625, type: 3}
+  - {fileID: 8300000, guid: 381757466d551df43905185f6a21b751, type: 3}
+  - {fileID: 8300000, guid: 299dbea6c1b93c44eaae98875929ef69, type: 3}
+  - {fileID: 8300000, guid: 434dedf11681df642a19649cb9cd33d3, type: 3}
   List_Answers: []
   Arr_GroupsNames:
   - BLACKPINK
@@ -3823,11 +3823,11 @@ MonoBehaviour:
   - MINZY
   - PSY
   - JIMIN
-  - debug
-  - debug
-  - debug
-  - debug
-  - debug
+  - Agust D
+  - Eunhyuk
+  - Heechul
+  - D.O.
+  - Changbin
   _CtryCanvas: {fileID: 879660260}
   v_QuizIndex: 0
   v_QuestionsQuantity: 30

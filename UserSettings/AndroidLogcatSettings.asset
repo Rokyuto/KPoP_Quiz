@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R58M96E48SB",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 6391,
+        "processId": 20186,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -84,6 +84,30 @@
             "deviceId": "R58M96E48SB",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 6391,
+            "exited": false
+        },
+        {
+            "deviceId": "R58M96E48SB",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 20628,
+            "exited": false
+        },
+        {
+            "deviceId": "R58M96E48SB",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 31124,
+            "exited": false
+        },
+        {
+            "deviceId": "R58M96E48SB",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 16457,
+            "exited": false
+        },
+        {
+            "deviceId": "R58M96E48SB",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 20186,
             "exited": false
         }
     ],

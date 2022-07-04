@@ -9,13 +9,14 @@ public class S_ScoreManager : MonoBehaviour
     public Slider _PlayerSuccessRateSlider; // Player SuccessRate ProgressBar
     public Text _PlayerSuccessRateText; // Player SuccessRate ProgressBar Text
 
-    public Slider _BestSuccessRateSlider; // Player SuccessRate ProgressBar
-    public Text _BestSuccessRateText; // Player SuccessRate ProgressBar Text
+    public Slider _BestSuccessRateSlider; // Player BEST SuccessRate ProgressBar
+    public Text _BestSuccessRateText; // Player BEST SuccessRate ProgressBar Text
 
     // Best Success Rates for each Category
     [SerializeField] private float v_GG_BestSuccessRate; // Guess Group
     [SerializeField] private float v_GS_BestSuccessRate; // Guess Song
     [SerializeField] private float v_GI_BestSuccessRate; // Guess Idol
+    [SerializeField] private float v_GIwS_BestSuccessRate; // Guess Idol who Sing
 
     [SerializeField] private string v_BestSuccessRateCategory;
 
@@ -31,6 +32,8 @@ public class S_ScoreManager : MonoBehaviour
         //PlayerPrefs.DeleteAll();
         v_GG_BestSuccessRate = PlayerPrefs.GetFloat("BestGuessGroupSuccessRate", v_GG_BestSuccessRate);
         v_GS_BestSuccessRate = PlayerPrefs.GetFloat("BestGuessSongSuccessRate", v_GS_BestSuccessRate);
+        v_GI_BestSuccessRate = PlayerPrefs.GetFloat("BestGuessIdolSuccessRate", v_GI_BestSuccessRate);
+        v_GIwS_BestSuccessRate = PlayerPrefs.GetFloat("BestGuessIdolwhoSingSuccessRate", v_GIwS_BestSuccessRate);
 
     }
 
@@ -41,6 +44,8 @@ public class S_ScoreManager : MonoBehaviour
         //PlayerPrefs.DeleteAll();
         _PlayerSuccessRateSlider.value = v_InitialProgressBarCapacity;
         _BestSuccessRateSlider.value = 0;
+
+        Debug.Log(v_GI_BestSuccessRate);
     }
 
     //Function to Calculate the Player Success Rate in the Quiz
@@ -53,11 +58,11 @@ public class S_ScoreManager : MonoBehaviour
         Update(); // Fill the Progress Bar
 
         float v_PlayerSuccessRate = v_SuccessRate * 100; // Calculate || Setup the Success Rate in range [0 - 100] %
-        Func_UpadePlayerHighScore(v_PlayerSuccessRate); // Cal Function to Update Best Score
+        Func_UpdadePlayerHighScore(v_PlayerSuccessRate); // Cal Function to Update Best Score
     }
 
     //Function to Update Player BestScore
-    public void Func_UpadePlayerHighScore(float v_PlayerSuccessRate)
+    public void Func_UpdadePlayerHighScore(float v_PlayerSuccessRate)
     {
         switch(_Quiz.v_QuizIndex)
         {
@@ -68,6 +73,14 @@ public class S_ScoreManager : MonoBehaviour
             case 1:
                 v_BestSuccessRate = v_GS_BestSuccessRate;
                 v_BestSuccessRateCategory = "BestGuessSongSuccessRate";
+                break;
+            case 2:
+                v_BestSuccessRate = v_GI_BestSuccessRate;
+                v_BestSuccessRateCategory = "BestGuessIdolSuccessRate";
+                break;
+            case 3:
+                v_BestSuccessRate = v_GIwS_BestSuccessRate;
+                v_BestSuccessRateCategory = "BestGuessIdolwhoSingSuccessRate";
                 break;
         }
 
@@ -80,7 +93,7 @@ public class S_ScoreManager : MonoBehaviour
             PlayerPrefs.Save(); // Save the new Information || Data
         }
 
-        Debug.Log(v_PlayerSuccessRate);
+        //Debug.Log(v_BestSuccessRate);
 
         //var BestSuccessProgressBarText = "Best Success Rate: " + (v_BestSuccessRate).ToString("0.00") + " %"; // Update || Setup Best Success Progress Bar Text VARIABLE [0 - 100 ] %
         //_BestSuccessRateText.text = BestSuccessProgressBarText; // Update BestSuccess ProgressBar TEXT

@@ -313,7 +313,7 @@ public class S_Quiz : MonoBehaviour
     {
         var v_CorrectButtonTextIndex = Random.Range(0, _List_AnsButtonsText.Count); // Generate Random Index of the Correct Buttons Text List which will contains the Correct Answer
 
-        /*if (v_QuizIndex == 0)
+        if (v_QuizIndex == 0)
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
@@ -327,27 +327,11 @@ public class S_Quiz : MonoBehaviour
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
-        }*/
-
-        switch (v_QuizIndex)
+        }
+        else if (v_QuizIndex == 3)
         {
-            case 0:
-                _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
-                v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
-                break;
-            case 1:
-                _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION AUDIO NAME - the CORRECT ANSWER
-                v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
-                break;
-            case 2:
-                _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionImageName; // Update his Text to the QUESTION IMAGE NAME - the CORRECT ANSWER
-                v_CorrectAnswer = v_QuestionImageName; // Update the Corect Answer to the Name of the Question Image
-
-                break;
-            case 3:
-                _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION AUDIO NAME - the CORRECT ANSWER
-                v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
-                break;
+            _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION AUDIO NAME - the CORRECT ANSWER
+            v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
         }
 
         v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
