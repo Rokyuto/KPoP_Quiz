@@ -3686,12 +3686,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9a41fadc7c670c54181da5dac2a565d7, type: 3}
   - {fileID: 8300000, guid: f341a55e4b1f84a41b1a507ba133dccf, type: 3}
   - {fileID: 8300000, guid: 1e285f679323c7a48bfb7f6a6f10ccbc, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
-  - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
+  - {fileID: 8300000, guid: c4601bd0208fd5044aa4d86250228c46, type: 3}
+  - {fileID: 8300000, guid: 2f6e26d98ee775b4087161957c810f38, type: 3}
+  - {fileID: 8300000, guid: 7b6ab09d2775d5a4f957a57a49b9c664, type: 3}
+  - {fileID: 8300000, guid: 6b618b695eaf9434ebd31e22716a8d99, type: 3}
+  - {fileID: 8300000, guid: 5363e5c276fc7a744b59c718483cb84c, type: 3}
+  - {fileID: 8300000, guid: 99888d7bb26ce2b4c8db0bb98c281050, type: 3}
   - {fileID: 8300000, guid: b40146a3ba9b04543803091c56ceb387, type: 3}
   - {fileID: 8300000, guid: 49a30962f72547d43899ec72f4a2a268, type: 3}
   - {fileID: 8300000, guid: 701aef8dbec19634f92f3c01617a1268, type: 3}
@@ -3815,12 +3815,12 @@ MonoBehaviour:
   - LEESEO
   - CHAEWON
   - HYOJUNG
-  - debug
-  - debug
-  - debug
-  - debug
-  - debug
-  - debug
+  - GAYOON
+  - SEEUN
+  - SUYEON
+  - JESSICA
+  - HYO
+  - MINZY
   - PSY
   - JIMIN
   - debug
