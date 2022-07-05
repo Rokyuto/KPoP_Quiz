@@ -175,6 +175,8 @@ public class S_Quiz : MonoBehaviour
             Func_HideClickMark(); // Reset Click Marks
             Func_UpdateLists(); // Update Quiz Lists
 
+            NextButton.gameObject.SetActive(false);
+
             switch (v_QuizIndex)
             {
                 case 0:
@@ -225,6 +227,7 @@ public class S_Quiz : MonoBehaviour
                 case 3:
                     v_CategoryIndex = 3;
                     _QuestionAudioSource.enabled = true; // Enable the Question Audio Source
+                    //NextButton.gameObject.SetActive(false);
 
                     List_Answers.AddRange(Arr_PerformersNames); // Add again the Idol who Sing Array to Answers List
 
@@ -241,6 +244,7 @@ public class S_Quiz : MonoBehaviour
                     SpecialButton.onClick.AddListener(Func_GenQuestionAudioContent);
 
                     break;
+
             }
 
         }
@@ -332,6 +336,8 @@ public class S_Quiz : MonoBehaviour
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION AUDIO NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
+
+            //NextButton.gameObject.SetActive(true);
         }
 
         v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
@@ -356,6 +362,8 @@ public class S_Quiz : MonoBehaviour
 
             List_Answers.Remove(List_Answers[v_WrongButtonsAnswerIndex]); // REMOVE the CORRECT ANSWER (STRING) from Answers List
         }
+
+        NextButton.gameObject.SetActive(true);
 
     }
 

@@ -595,6 +595,7 @@ MonoBehaviour:
   v_GG_BestSuccessRate: 0
   v_GS_BestSuccessRate: 0
   v_GI_BestSuccessRate: 0
+  v_GIwS_BestSuccessRate: 0
   v_BestSuccessRateCategory: 
   _Quiz: {fileID: 895827251}
   v_BestSuccessRate: 0
@@ -1509,7 +1510,7 @@ GameObject:
   - component: {fileID: 543216875}
   - component: {fileID: 543216878}
   m_Layer: 5
-  m_Name: ??Button
+  m_Name: GuessSongAlbumButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2370,7 +2371,7 @@ GameObject:
   - component: {fileID: 715290930}
   - component: {fileID: 715290929}
   m_Layer: 5
-  m_Name: GuessPartPerformerText (TMP) - ??
+  m_Name: GuessSongAlbumText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2416,7 +2417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Guess song part performer - ??
+  m_text: Guess Song Album
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
