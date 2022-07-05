@@ -175,7 +175,7 @@ public class S_Quiz : MonoBehaviour
             Func_HideClickMark(); // Reset Click Marks
             Func_UpdateLists(); // Update Quiz Lists
 
-            NextButton.gameObject.SetActive(false);
+            NextButton.gameObject.SetActive(false); // Disable Button 'Next' until the Question Content and Buttons Answers are Generated
 
             switch (v_QuizIndex)
             {
@@ -336,8 +336,6 @@ public class S_Quiz : MonoBehaviour
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION AUDIO NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
-
-            //NextButton.gameObject.SetActive(true);
         }
 
         v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
@@ -363,7 +361,7 @@ public class S_Quiz : MonoBehaviour
             List_Answers.Remove(List_Answers[v_WrongButtonsAnswerIndex]); // REMOVE the CORRECT ANSWER (STRING) from Answers List
         }
 
-        NextButton.gameObject.SetActive(true);
+        NextButton.gameObject.SetActive(true); // Enable Button 'Next' after the Question Content and Buttons Answers are Generated
 
     }
 
