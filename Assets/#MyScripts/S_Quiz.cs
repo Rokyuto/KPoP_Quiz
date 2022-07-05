@@ -40,8 +40,9 @@ public class S_Quiz : MonoBehaviour
     // Question Lists and Arrays
 
     // Lists
-    public List<Sprite> _List_GuessImage; // List with Groups Images
-    public List<AudioClip> _List_GuessAudio; // List with Songs Audios
+    public List<Sprite> _List_GuessImage; // List with Images
+    public List<AudioClip> _List_GuessAudio; // List with Audios
+    public List<VideoClip> _List_GuessVideo; // List with Videos
 
     // Arrays
     public Sprite[] _Arr_GuessGroupsImgs; // Array with Groups Images for "Guess the Group" Quiz
@@ -49,14 +50,22 @@ public class S_Quiz : MonoBehaviour
     public AudioClip[] _Arr_GuessSongs; // Array with Songs Audios for "Guess the Song" Quiz
     public AudioClip[] _Arr_GuessPerformer; // Array with Song Performer for "Guess the Idol who Sing" Quiz
 
+    // TODO:
+    public AudioClip[] _Arr_GuessSongAlbum; // Array with Songs from Albums
+    public VideoClip[] _Arr_GuessSongDance; // Array with Dances from Songs
+    public Sprite[] _Arr_GuessIdolNationality; // Array with Idols to Guess Their Nationality
+
     //Answers List
     public List<string> List_Answers = new List<string>(); //List Quiz Answers
 
     //Quiz Answers Arrays
-    public string[] Arr_GroupsNames; // Array with Groups Names
-    public string[] Arr_SongsNames; // Array with Songs Names
-    public string[] Arr_IdolsNames; // Array with Idols Names
-    public string[] Arr_PerformersNames; // Array with Song Performers
+    public string[] Arr_GroupsNames; // Array with Question Groups Names
+    public string[] Arr_SongsNames; // Array with Question Songs Names
+    public string[] Arr_IdolsNames; // Array with Question Idols Names
+    public string[] Arr_PerformersNames; // Array with Question Song Performers
+    public string[] Arr_SongAlbums; // Array with Question Songs Albums
+    public string[] Arr_SongDances; // Array with Question Songs Dances
+    public string[] Arr_IdolNationality; // Array with Question Idols Nationality
 
     //Other Objects
     public S_CtryCanvas _CtryCanvas; // Category Canvas
@@ -74,11 +83,15 @@ public class S_Quiz : MonoBehaviour
     public int v_CorrectScore = 0; //Score for Correct Answers
     public int v_WrongScore = 0; //Score for Wrong Answers
 
+    int v_Index_QuestionImage; //Question Image Index
+    string v_QuestionImageName; // Question Image Name (Correct Question Answer)
+
     int v_Index_QuestionAudio; // Question Audio Index
     string v_QuestionAudioName; // Question Audio Name (Correct Question Answer)
 
-    int v_Index_QuestionImage; //Question Image Index
-    string v_QuestionImageName; // Question Image Name (Correct Question Answer)
+    int v_Index_QuestionVideo; // Question Video Index
+    string v_QuestionVideoName; // Question Video Name (Correct Question Answer)
+
     string v_CorrectAnswer; // Correct Answer Variable
 
     Button LastClickedButton = null; // Tracker Last Clicked Button
@@ -99,6 +112,7 @@ public class S_Quiz : MonoBehaviour
         _ScoreManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<S_ScoreManager>(); // Initialize the S_ScoreManager Script from the BestScoreText (this Object has "Manager" tag )
         //_ScoreManager = new S_ScoreManager();
         Func_VisualizeQuizPanel(false); //Visualize Quiz Panel
+
     }
 
     //Update Quiz Canvas Visibility
@@ -245,6 +259,26 @@ public class S_Quiz : MonoBehaviour
 
                     break;
 
+                case 5:
+                    v_CategoryIndex = 5;
+                    //_QuestionVideoPlayer.enabled = true; // Enable the Question Video Player
+
+                    List_Answers.AddRange(Arr_SongDances); // Add again the Song Dances Arr to Answers List
+
+                    // Clear Buttons' Texts
+                    foreach (var AnsButtons in _Arr_AnsButtonsText)
+                    {
+                        AnsButtons.GetComponentInChildren<TextMeshProUGUI>().text = null;
+                    }
+                    _QuestionVideoPlayer.Stop(); // Stop Playing Question Video 
+
+                    SpecialButton.onClick.RemoveAllListeners(); // Remove All Events with the Special Button
+
+                    // Play Question Video On Special Button Click || After that Generate Answers || In the End Remove Listener
+                    SpecialButton.onClick.AddListener(Func_GenQuestionVideoContent);
+
+                    break;
+
             }
 
         }
@@ -290,7 +324,7 @@ public class S_Quiz : MonoBehaviour
     public void Func_GenQuestionImgContent()
     {
         v_Index_QuestionImage = Random.Range( 0, _List_GuessImage.Count ); // Generate Random INDEX for Question Picture
-        _QuestionPicture.sprite = _List_GuessImage[v_Index_QuestionImage]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
+        _QuestionPicture.sprite = _List_GuessImage[v_Index_QuestionImage]; // Change Question Picture sprite to the Image located on the INDEX in Guess Image Array 
         v_QuestionImageName = _QuestionPicture.sprite.name; //GET the NAME of the IMAGE
 
         _List_GuessImage.RemoveAt(v_Index_QuestionImage); // Remove the Question Image 
@@ -299,9 +333,9 @@ public class S_Quiz : MonoBehaviour
     //Generate Random Question Audio from _List_GuessAudio List
     public void Func_GenQuestionAudioContent()
     {
-        v_Index_QuestionAudio = Random.Range(0, _List_GuessAudio.Count); // Generate Random INDEX for Question Picture
-        _QuestionAudioSource.clip = _List_GuessAudio[v_Index_QuestionAudio]; // Change Question Picture sprite to the Image located on the INDEX in Guess Group Array 
-        v_QuestionAudioName = _QuestionAudioSource.clip.name; //GET the NAME of the IMAGE
+        v_Index_QuestionAudio = Random.Range(0, _List_GuessAudio.Count); // Generate Random INDEX for Question Audio
+        _QuestionAudioSource.clip = _List_GuessAudio[v_Index_QuestionAudio]; // Change Question Audio clip to the Audio located on the INDEX in Guess Audio Array 
+        v_QuestionAudioName = _QuestionAudioSource.clip.name; //GET the NAME of the Audio
 
         _List_GuessAudio.RemoveAt(v_Index_QuestionAudio); // Remove from GuessAudio List the Choosen Audio / Song
 
@@ -309,6 +343,27 @@ public class S_Quiz : MonoBehaviour
 
         Func_GenButtonsAnswers(); // Generate Answers
         SpecialButton.onClick.RemoveListener(Func_GenQuestionAudioContent); // Remove All Special Button Listeners
+
+    }
+
+    //Generate Random Question Video from _List_GuessVideo List
+    public void Func_GenQuestionVideoContent()
+    {
+        _QuestionVideoPlayer.gameObject.SetActive(true); // ENABLE Question Video Object
+        _QuestionVideoPlayer.GetComponentInChildren<RawImage>().enabled = true;
+
+        v_Index_QuestionVideo = Random.Range(0, _List_GuessVideo.Count); // Generate Random INDEX for Question Video
+        _QuestionVideoPlayer.clip = _List_GuessVideo[v_Index_QuestionVideo]; // Change Question Video clip to the Video located on the INDEX in Guess Video Array 
+        v_QuestionVideoName = _QuestionVideoPlayer.clip.name; //GET the NAME of the Video
+
+        _List_GuessVideo.RemoveAt(v_Index_QuestionVideo); // Remove from GuessVideo List the Choosen Video / Dance
+
+        _QuestionVideoPlayer.Play(); // Play the Video Source ( Choosen Video/Dance )
+        _QuestionVideoPlayer.SetDirectAudioMute(0, true); // Mute the Audio of the VideoClip 
+
+        Func_GenButtonsAnswers(); // Generate Answers
+
+        SpecialButton.onClick.RemoveListener(Func_GenQuestionVideoContent); // Remove All Special Button Listeners
 
     }
 
@@ -336,6 +391,11 @@ public class S_Quiz : MonoBehaviour
         {
             _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionAudioName; // Update his Text to the QUESTION AUDIO NAME - the CORRECT ANSWER
             v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Audio
+        }
+        else if (v_QuizIndex == 5)
+        {
+            _List_AnsButtonsText[v_CorrectButtonTextIndex].text = v_QuestionVideoName; // Update his Text to the QUESTION VIDEO NAME - the CORRECT ANSWER
+            v_CorrectAnswer = v_QuestionAudioName; // Update the Corect Answer to the Name of the Question Video
         }
 
         v_CorrectAnswerIndex = List_Answers.IndexOf(v_CorrectAnswer); // Find Index of the Correct Answer in the Answers List
@@ -452,6 +512,8 @@ public class S_Quiz : MonoBehaviour
         v_CorrectScore = 0;
         v_WrongScore = 0;
         _QuestionPicture.sprite = null; // Reset Question Picture Actor Sprite 
+        _QuestionVideoPlayer.GetComponentInChildren<RawImage>().enabled = false;
+        _QuestionVideoPlayer.gameObject.SetActive(false); // DISABLE Question Video Object
     }
 
     public void Func_NextQuiz()

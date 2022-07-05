@@ -34,6 +34,7 @@ public class S_CategoryBtn : MonoBehaviour
 
                 _QuizCanvas._QuestionPicture.enabled = true; //ENABLE Question Picture Object 
                 _QuizCanvas._QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
+                _QuizCanvas._QuestionVideoPlayer.gameObject.SetActive(false); // DISABLE Question Video Object 
                 _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "View Image";
                 break;
 
@@ -47,6 +48,7 @@ public class S_CategoryBtn : MonoBehaviour
 
                 _QuizCanvas._QuestionPicture.enabled = false; //DISABLE Question Picture Object 
                 //_QuizCanvas._QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
+                _QuizCanvas._QuestionVideoPlayer.gameObject.SetActive(false); // DISABLE Question Video Object 
                 _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "Play Audio";
                 break;
 
@@ -60,6 +62,7 @@ public class S_CategoryBtn : MonoBehaviour
 
                 _QuizCanvas._QuestionPicture.enabled = true; //ENABLE Question Picture Object 
                 _QuizCanvas._QuestionAudioSource.enabled = false; //DISABLE Question Audio Object 
+                _QuizCanvas._QuestionVideoPlayer.gameObject.SetActive(false); // DISABLE Question Video Object 
                 _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "View Image";
                 break;
 
@@ -71,8 +74,9 @@ public class S_CategoryBtn : MonoBehaviour
 
                 _QuizCanvas.v_QuizIndex = 3;
 
-                _QuizCanvas._QuestionPicture.enabled = false; //DISABLE Question Picture Object 
-                //_QuizCanvas._QuestionAudioSource.enabled = true; //ENABLE Question Audio Object 
+                _QuizCanvas._QuestionPicture.enabled = false; //DISABLE Question Picture Object
+                //_QuizCanvas._QuestionAudioSource.enabled = true; //ENABLE Question Audio Object
+                _QuizCanvas._QuestionVideoPlayer.gameObject.SetActive(false); // DISABLE Question Video Object 
                 _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "Play Audio";
                 break;
 
@@ -82,6 +86,19 @@ public class S_CategoryBtn : MonoBehaviour
 
             case 5:
                 QuizTask = "Guess which song the dance is from";
+                // Fill Lists with Song Dances Videos and Answers
+                _QuizCanvas.List_Answers.AddRange(_QuizCanvas.Arr_SongDances);
+                _QuizCanvas._List_GuessVideo.AddRange(_QuizCanvas._Arr_GuessSongDance);
+
+                _QuizCanvas.v_QuizIndex = 5;
+
+                _QuizCanvas._QuestionPicture.enabled = false; // DISABLE Question Picture Object 
+                _QuizCanvas._QuestionAudioSource.enabled = false; // DISABLE Question Audio Object 
+                                                                  //_QuizCanvas._QuestionVideoPlayer.gameObject.SetActive(true); // ENABLE Question Video Object
+                _QuizCanvas._QuestionVideoPlayer.GetComponentInChildren<RawImage>().enabled = false;
+                _QuizCanvas._QuestionVideoPlayer.gameObject.SetActive(true); // ENABLE Question Video Object
+
+                _QuizCanvas.SpecialButton.GetComponentInChildren<TextMeshProUGUI>().text = "Play Video";
                 break;
 
             case 6:
