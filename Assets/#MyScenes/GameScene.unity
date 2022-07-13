@@ -3777,6 +3777,11 @@ MonoBehaviour:
   _Arr_GuessSongAlbum: []
   _Arr_GuessSongDance:
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
+  - {fileID: 32900000, guid: bb0a06b2887bda944bfee963b2d21b69, type: 3}
+  - {fileID: 32900000, guid: 1efc716655488ed47875a4634c34bd8c, type: 3}
+  - {fileID: 32900000, guid: bd68364fe9132434496ff5d49c599e1e, type: 3}
+  - {fileID: 32900000, guid: b43b888bdfa25d44eb2fd70498451e54, type: 3}
+  - {fileID: 32900000, guid: 329c6e216fed9c646913dd1356d0437a, type: 3}
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
@@ -3793,18 +3798,13 @@ MonoBehaviour:
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
-  - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
+  - {fileID: 32900000, guid: 5346333f864090246a5d578de669157b, type: 3}
+  - {fileID: 32900000, guid: f2056d862fe1f844daaed5cd9ff914fc, type: 3}
+  - {fileID: 32900000, guid: f5a660f5eff12ef45b9b43d541d06911, type: 3}
+  - {fileID: 32900000, guid: b27677ae91f634a4fbb3244558df07be, type: 3}
+  - {fileID: 32900000, guid: 4a5ab7d3c123455499a7e436a8154b50, type: 3}
+  - {fileID: 32900000, guid: 0ed3b50a4f914a147aa995bc7935b34c, type: 3}
+  - {fileID: 32900000, guid: 1cf66831fee1d4f43bd54199b7ad731d, type: 3}
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
   - {fileID: 32900000, guid: d53552471f69fc742ab162fb38953aac, type: 3}
   _Arr_GuessIdolNationality: []
@@ -3940,6 +3940,11 @@ MonoBehaviour:
   Arr_SongAlbums: []
   Arr_SongDances:
   - Kill This Love
+  - MORE AND MORE
+  - NOT SHY
+  - BECAUSE
+  - Helicopter
+  - Egotistic
   - Kill This Love
   - Kill This Love
   - Kill This Love
@@ -3956,18 +3961,13 @@ MonoBehaviour:
   - Kill This Love
   - Kill This Love
   - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
-  - Kill This Love
+  - FIRE 2NE1
+  - Good Luck
+  - BANG BANG BANG
+  - FIRE BTS
+  - Daechwita
+  - SHINE
+  - CHAIN
   - Kill This Love
   - Kill This Love
   Arr_IdolNationality: []
