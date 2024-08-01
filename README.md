@@ -1,3 +1,3 @@
 # KPoP_Quiz
  
-This is my own Game, made on Unity for Android :)
+"KPoP Quiz" is a mobile game, made with Unity.
